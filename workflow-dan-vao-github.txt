@@ -1,0 +1,75 @@
+name: Theo doi chung khoan
+
+on:
+  schedule:
+    - cron: "5 0 * * 2-6"    # 07:05 giờ VN, thứ 3 → thứ 7 (sau khi Mỹ đóng cửa)
+    - cron: "20 8 * * 1-5"   # 15:20 giờ VN, thứ 2 → thứ 6 (sau phiên Việt Nam)
+  workflow_dispatch:          # cho phép bấm nút "Run workflow" để chạy tay
+    inputs:
+      che_do:
+        description: "Chọn loại bản tin"
+        type: choice
+        default: chieu
+        options:
+          - chieu
+          - sang
+          - kiem-tra
+      quet_bctc:
+        description: "Quét báo cáo tài chính ngay (chỉ áp dụng cho bản tin chiều)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: theo-doi-chung-khoan
+  cancel-in-progress: false
+
+jobs:
+  chay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cài Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Cài thư viện
+        run: pip install -r requirements.txt
+
+      - name: Chọn chế độ chạy
+        id: chon
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            CHE_DO="${{ inputs.che_do }}"
+            [ "${{ inputs.quet_bctc }}" = "true" ] && CHE_DO="$CHE_DO --bctc"
+          elif [ "${{ github.event.schedule }}" = "5 0 * * 2-6" ]; then
+            CHE_DO="sang"
+          else
+            CHE_DO="chieu"
+          fi
+          echo "che_do=$CHE_DO" >> "$GITHUB_OUTPUT"
+          echo "Chế độ: $CHE_DO"
+
+      - name: Chạy chương trình
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+          TZ: Asia/Ho_Chi_Minh
+        run: python main.py ${{ steps.chon.outputs.che_do }}
+
+      - name: Lưu lịch sử tín hiệu
+        if: always()
+        run: |
+          git config user.name "bot-chung-khoan"
+          git config user.email "bot-chung-khoan@users.noreply.github.com"
+          git add data/ || true
+          git diff --cached --quiet || git commit -m "Cập nhật dữ liệu $(date +'%d/%m/%Y')"
+          git push || echo "Không lưu được lịch sử (không ảnh hưởng bản tin)"

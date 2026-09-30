@@ -1,0 +1,6 @@
+vnstock
+yfinance
+pandas
+numpy
+pyyaml
+requests

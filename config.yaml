@@ -1,0 +1,126 @@
+# =====================================================================
+#  FILE CẤU HÌNH — đây là file DUY NHẤT bạn cần sửa khi muốn thay đổi.
+#  Quy tắc: giữ nguyên dấu hai chấm ":" và khoảng trắng đầu dòng.
+#  Dòng bắt đầu bằng dấu "#" là ghi chú, chương trình bỏ qua.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1. DANH SÁCH CỔ PHIẾU
+# ---------------------------------------------------------------------
+# tu_dong_lay_vn30: true  -> chương trình tự lấy danh sách VN30 mới nhất.
+# Nếu không lấy được, sẽ dùng danh sách dự phòng bên dưới
+# (rổ VN30 kỳ tháng 7/2026, hiệu lực từ 03/08/2026; HOSE rà soát lại vào tháng 1 và tháng 7).
+tu_dong_lay_vn30: true
+
+vn30_du_phong: [ACB, BID, CTG, HDB, LPB, MBB, SHB, SSB, STB, TCB, VCB, VIB, VPB,
+                SSI, TCX, FPT, HPG, GAS, BSR, VJC, VIC, VHM, VRE, VPL,
+                MSN, MWG, VNM, MCH, SAB, GVR]
+
+# Muốn theo dõi thêm mã ngoài VN30 thì ghi vào đây, ví dụ: [PNJ, DGC, REE]
+co_phieu_them: []
+
+# Các mã ngân hàng / chứng khoán: bỏ qua tiêu chí "nợ/vốn chủ" vì ngành này
+# vốn dĩ dùng đòn bẩy cao.
+nganh_tai_chinh: [ACB, BID, CTG, HDB, LPB, MBB, SHB, SSB, STB, TCB, VCB, VIB, VPB, TPB,
+                  SSI, TCX, VCI, HCM, VND, VCK, VPX]
+
+# ---------------------------------------------------------------------
+# 2. DANH MỤC ĐANG NẮM GIỮ (tùy chọn)
+# ---------------------------------------------------------------------
+# Ghi các mã bạn đang có để nhận cảnh báo cắt lỗ / chốt lời.
+# gia_mua tính theo NGHÌN ĐỒNG (ví dụ 105.5 nghĩa là 105.500 đ).
+# Bỏ dấu "#" ở đầu các dòng ví dụ để dùng.
+danh_muc: []
+#  - {ma: FPT, gia_mua: 105.5, cat_lo_phan_tram: 7, chot_loi_phan_tram: 20}
+#  - {ma: HPG, gia_mua: 27.3,  cat_lo_phan_tram: 7, chot_loi_phan_tram: 15}
+
+# ---------------------------------------------------------------------
+# 3. TÍN HIỆU KỸ THUẬT (chạy mỗi ngày sau phiên)
+# ---------------------------------------------------------------------
+ky_thuat:
+  ma_ngan: 20            # đường trung bình ngắn (MA20)
+  ma_trung: 50           # MA50
+  ma_dai: 200            # MA200
+  rsi_chu_ky: 14
+  rsi_qua_ban: 30        # RSI dưới mức này = quá bán
+  rsi_qua_mua: 70        # RSI trên mức này = quá mua
+  khoi_luong_dot_bien: 1.5   # khối lượng > 1,5 lần trung bình 20 phiên
+  # Điểm của từng tín hiệu. Tổng điểm >= 2 là "tích cực", <= -2 là "tiêu cực".
+  diem:
+    cat_len_ma_ngan: 1
+    cat_xuong_ma_ngan: -1
+    vuot_ma_trung: 1
+    thung_ma_trung: -2
+    giao_cat_vang: 2       # MA50 cắt lên MA200
+    giao_cat_tu_than: -2   # MA50 cắt xuống MA200
+    rsi_qua_ban: 1
+    rsi_qua_mua: -1
+    macd_cat_len: 1
+    macd_cat_xuong: -1
+    kl_dot_bien_tang: 1
+    kl_dot_bien_giam: -1
+    dinh_52_tuan: 1
+    day_52_tuan: -1
+  nguong_tich_cuc: 2
+  nguong_tieu_cuc: -2
+
+# ---------------------------------------------------------------------
+# 4. TÍN HIỆU BÁO CÁO TÀI CHÍNH (theo quý)
+# ---------------------------------------------------------------------
+co_ban:
+  doanh_thu_tang_yoy: 15      # % tăng doanh thu so với cùng kỳ năm trước
+  loi_nhuan_tang_yoy: 20      # % tăng lợi nhuận sau thuế so với cùng kỳ
+  loi_nhuan_giam_canh_bao: -20  # giảm quá mức này thì cảnh báo
+  roe_toi_thieu: 15           # %
+  no_tren_von_chu_toi_da: 1.5 # lần (không áp dụng cho ngành tài chính)
+  pe_toi_da: 20
+  # Mùa báo cáo: kiểm tra BCTC mỗi ngày trong các khoảng này,
+  # ngoài mùa thì chỉ kiểm tra vào thứ Hai hằng tuần.
+  mua_bao_cao:
+    - {thang: 1,  tu_ngay: 15, den_ngay: 31}
+    - {thang: 2,  tu_ngay: 1,  den_ngay: 15}
+    - {thang: 3,  tu_ngay: 20, den_ngay: 31}   # BCTC năm kiểm toán
+    - {thang: 4,  tu_ngay: 1,  den_ngay: 30}
+    - {thang: 5,  tu_ngay: 1,  den_ngay: 15}
+    - {thang: 7,  tu_ngay: 15, den_ngay: 31}
+    - {thang: 8,  tu_ngay: 1,  den_ngay: 31}   # gồm cả BCTC bán niên soát xét
+    - {thang: 10, tu_ngay: 15, den_ngay: 31}
+    - {thang: 11, tu_ngay: 1,  den_ngay: 15}
+
+# ---------------------------------------------------------------------
+# 5. CHỈ SỐ VĨ MÔ
+# ---------------------------------------------------------------------
+# "nguong_ngay": cảnh báo khi biến động trong 1 phiên vượt mức này (%).
+# Với lợi suất trái phiếu: đơn vị là điểm phần trăm (0.15 = 15 điểm cơ bản).
+vi_mo:
+  chi_so:
+    - {ten: "S&P 500",        ma: "^GSPC",     nhom: my,     nguong_ngay: 2}
+    - {ten: "Nasdaq",         ma: "^IXIC",     nhom: my,     nguong_ngay: 2.5}
+    - {ten: "Dow Jones",      ma: "^DJI",      nhom: my,     nguong_ngay: 2}
+    - {ten: "Nikkei 225",     ma: "^N225",     nhom: chau_a, nguong_ngay: 2.5}
+    - {ten: "Shanghai",       ma: "000001.SS", nhom: chau_a, nguong_ngay: 2}
+    - {ten: "CSI 300",        ma: "000300.SS", nhom: chau_a, nguong_ngay: 2}
+    - {ten: "Hang Seng",      ma: "^HSI",      nhom: chau_a, nguong_ngay: 2.5}
+    - {ten: "DXY",            ma: "DX-Y.NYB",  nhom: tien_te, nguong_ngay: 0.7}
+    - {ten: "USD/VND (quốc tế)", ma: "USDVND=X", nhom: tien_te, nguong_ngay: 0.3}
+    - {ten: "USD/JPY",        ma: "JPY=X",     nhom: tien_te, nguong_ngay: 1}
+    - {ten: "USD/CNY",        ma: "CNY=X",     nhom: tien_te, nguong_ngay: 0.5}
+    - {ten: "Vàng thế giới",  ma: "GC=F",      nhom: hang_hoa, nguong_ngay: 2}
+    - {ten: "Bitcoin",        ma: "BTC-USD",   nhom: hang_hoa, nguong_ngay: 5}
+    - {ten: "Lợi suất 10N Mỹ", ma: "^TNX",     nhom: loi_suat, nguong_ngay: 0.12, la_loi_suat: true}
+  # Lợi suất 10 năm Việt Nam và Nhật (lấy từ TradingView, dự phòng FRED cho Nhật)
+  loi_suat_khac:
+    - {ten: "Lợi suất 10N Nhật", ma_tradingview: "TVC:JP10Y", ma_fred: "IRLTLT01JPM156N", nguong_ngay: 0.08}
+    - {ten: "Lợi suất 10N Việt Nam", ma_tradingview: "TVC:VN10Y", nguong_ngay: 0.1}
+  # Cảnh báo tổng hợp
+  dxy_tang_5_phien: 1.5          # DXY tăng > 1,5% trong 5 phiên
+  usdvnd_tang_20_phien: 0.8      # USD/VND tăng > 0,8% trong 20 phiên
+  loi_suat_my_tang_5_phien: 0.25 # lợi suất 10N Mỹ tăng > 0,25 điểm % trong 5 phiên
+  chenh_lech_vang_sjc_canh_bao: 15   # vàng SJC cao hơn thế giới > 15% thì cảnh báo
+
+# ---------------------------------------------------------------------
+# 6. KHÁC
+# ---------------------------------------------------------------------
+# Nghỉ giữa các lần gọi dữ liệu (giây) để không bị nguồn dữ liệu chặn.
+# Nếu có API key vnstock (đăng ký miễn phí) có thể giảm xuống 1.2
+nghi_giua_cac_lan_goi: 3.2
