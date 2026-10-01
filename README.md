@@ -3,7 +3,8 @@
 Chương trình gửi bản tin về Telegram mỗi ngày:
 
 - **07:05 sáng (thứ 3 → thứ 7):** chứng khoán Mỹ, Nhật, Trung Quốc, DXY, tỷ giá, vàng, Bitcoin, lợi suất trái phiếu 10 năm Mỹ / Nhật / Việt Nam.
-- **15:20 chiều (thứ 2 → thứ 6):** tín hiệu kỹ thuật cho 30 mã VN30, báo cáo tài chính quý (khi có báo cáo mới), cảnh báo danh mục, vĩ mô trong nước (tỷ giá Vietcombank, vàng SJC).
+- **15 phút/lần** trong phiên VN (9:00–15:00) và phiên Mỹ (20:00–4:00): chỉ nhắn cảnh báo mới, mỗi giờ thêm tóm tắt ngắn.
+- **15:20 chiều (thứ 2 → thứ 6):** tín hiệu kỹ thuật cho các mã VN100, báo cáo tài chính quý (khi có báo cáo mới), cảnh báo danh mục, vĩ mô trong nước (tỷ giá Vietcombank, vàng SJC).
 
 ## Các file
 
@@ -21,6 +22,7 @@ Chương trình gửi bản tin về Telegram mỗi ngày:
 Trên GitHub: tab **Actions** → **Theo doi chung khoan** → **Run workflow** → chọn:
 - `chieu`: bản tin VN30 + vĩ mô
 - `sang`: bản tin thế giới
+- `nhanh`: cập nhật 15 phút (chạy tay luôn kèm tóm tắt)
 - `kiem-tra`: kiểm tra từng nguồn dữ liệu (dùng khi có lỗi)
 
 Lưu ý: đây là công cụ hỗ trợ theo dõi, không phải khuyến nghị đầu tư.

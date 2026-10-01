@@ -5,6 +5,7 @@ Cách chạy:
     python main.py sang          # bản tin sáng: chỉ số thế giới sau khi Mỹ đóng cửa
     python main.py chieu         # bản tin chiều: VN30 (kỹ thuật + BCTC) + vĩ mô trong nước
     python main.py chieu --bctc  # bắt buộc quét báo cáo tài chính hôm nay
+    python main.py nhanh         # cập nhật 15 phút (cảnh báo mới + tóm tắt mỗi giờ)
     python main.py kiem-tra      # chẩn đoán: kiểm tra từng nguồn dữ liệu có hoạt động không
 """
 from __future__ import annotations
@@ -21,7 +22,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from src import bao_cao, co_ban, ky_thuat, thong_bao, vi_mo
+from src import bao_cao, co_ban, ky_thuat, nhanh, thong_bao, vi_mo
 from src import nguon_du_lieu as nd
 
 GOC = Path(__file__).resolve().parent
@@ -75,12 +76,13 @@ def trong_mua_bao_cao(cfg: dict, hom_nay: datetime) -> bool:
 
 
 def danh_sach_co_phieu(cfg: dict) -> list[str]:
-    ds = nd.lay_danh_sach_vn30() if cfg.get("tu_dong_lay_vn30", True) else []
+    nhom = str(cfg.get("nhom_co_phieu", "VN30")).upper()
+    ds = nd.lay_danh_sach_nhom(nhom)
     if ds:
-        log.info("Lấy được danh sách VN30 tự động: %s", ", ".join(ds))
+        log.info("Lấy được danh sách %s tự động (%d mã)", nhom, len(ds))
     else:
         ds = [str(x).upper() for x in cfg["vn30_du_phong"]]
-        log.info("Dùng danh sách VN30 dự phòng trong config.yaml")
+        log.warning("Không lấy được danh sách %s — dùng danh sách VN30 dự phòng", nhom)
     them = [str(x).upper() for x in (cfg.get("co_phieu_them") or [])]
     danh_muc = [str(x["ma"]).upper() for x in (cfg.get("danh_muc") or [])]
     return list(dict.fromkeys(ds + them + danh_muc))
@@ -107,13 +109,14 @@ def chay_chieu(cfg: dict, ep_bctc: bool = False):
     canh_bao_dm: list[str] = []
     danh_muc = {str(x["ma"]).upper(): x for x in (cfg.get("danh_muc") or [])}
 
+    tat_ca_gia = nd.lay_gia_nhieu_ma(ds)
+    log.info("Lấy được giá %d/%d mã", len(tat_ca_gia), len(ds))
     for i, ma in enumerate(ds, 1):
-        log.info("[%d/%d] %s", i, len(ds), ma)
         try:
-            df, nguon = nd.lay_gia_co_phieu(ma)
-            if df is None:
+            if ma not in tat_ca_gia:
                 loi.append(ma)
                 continue
+            df, nguon = tat_ca_gia[ma]
             nguon_dung.add(nguon)
             kt = ky_thuat.phan_tich(ma, df, cfg["ky_thuat"])
             ket_qua_kt.append(kt)
@@ -165,6 +168,46 @@ def chay_chieu(cfg: dict, ep_bctc: bool = False):
     thong_bao.gui(bao_cao.ban_tin_vi_mo(vm, "🌏 Vĩ mô cuối ngày"))
 
 
+def chay_nhanh(cfg: dict):
+    """Cập nhật 15 phút: chỉ báo cảnh báo mới; mỗi giờ thêm một bản tóm tắt."""
+    c15 = cfg.get("cap_nhat_15_phut") or {}
+    if not c15.get("bat", True):
+        log.info("Cập nhật 15 phút đang tắt trong config.yaml")
+        return
+    bay_gio = datetime.now(GIO_VN)
+    theo_lich = os.environ.get("GITHUB_EVENT_NAME") == "schedule"
+    phien = nhanh.phien_hien_tai(bay_gio)
+    if phien is None:
+        if theo_lich:
+            log.info("Ngoài giờ theo dõi — bỏ qua")
+            return
+        phien = "vn" if bay_gio.weekday() < 5 and 9 <= bay_gio.hour < 15 else "my"
+    hom_nay = bay_gio.date().isoformat()
+    file_tt = THU_MUC_DATA / "trang_thai_nhanh.json"
+    tt = nhanh.doc_tt(file_tt)
+    canh_bao: list[str] = []
+
+    vn = None
+    if phien == "vn":
+        vn = nhanh.quet_co_phieu(danh_sach_co_phieu(cfg), cfg, bay_gio, tt, canh_bao, hom_nay)
+        if vn is None and theo_lich:
+            nhanh.ghi_tt(file_tt, tt, hom_nay)
+            return                      # ngày nghỉ lễ
+    vm = nhanh.quet_vi_mo(cfg, tt, canh_bao, hom_nay)
+
+    khoa_gio = f"{hom_nay} {bay_gio.hour}"
+    tom_tat = c15.get("tom_tat_moi_gio", True) and tt.get("tom_tat_gio") != khoa_gio
+    if not theo_lich:
+        tom_tat = True                   # chạy tay thì luôn gửi tóm tắt
+    tin = nhanh.soan_tin(bay_gio, phien, canh_bao, vn, vm, tom_tat, int(c15.get("so_ma_top", 5)))
+    if tin:
+        thong_bao.gui(tin)
+    if tom_tat:
+        tt["tom_tat_gio"] = khoa_gio
+    nhanh.ghi_tt(file_tt, tt, hom_nay)
+    log.info("Xong: %d cảnh báo mới, tóm tắt: %s", len(canh_bao), tom_tat)
+
+
 def chay_kiem_tra(cfg: dict):
     """Kiểm tra từng nguồn dữ liệu và gửi kết quả — dùng khi có lỗi."""
     import pandas as pd
@@ -173,8 +216,9 @@ def chay_kiem_tra(cfg: dict):
     def ghi(ten, ok, chi_tiet=""):
         dong.append(f"{'✅' if ok else '❌'} {thong_bao.esc(ten)}{': ' + thong_bao.esc(chi_tiet) if chi_tiet else ''}")
 
-    vn30 = nd.lay_danh_sach_vn30()
-    ghi("Danh sách VN30 tự động", bool(vn30), f"{len(vn30)} mã" if vn30 else "sẽ dùng danh sách dự phòng")
+    nhom = str(cfg.get("nhom_co_phieu", "VN30")).upper()
+    vn30 = nd.lay_danh_sach_nhom(nhom)
+    ghi(f"Danh sách {nhom} tự động", bool(vn30), f"{len(vn30)} mã" if vn30 else "sẽ dùng danh sách VN30 dự phòng")
 
     df, nguon = nd.lay_gia_co_phieu("FPT")
     ghi("Giá cổ phiếu (FPT)", df is not None,
@@ -217,6 +261,8 @@ def main():
             chay_sang(cfg)
         elif che_do == "chieu":
             chay_chieu(cfg, ep_bctc="--bctc" in sys.argv)
+        elif che_do == "nhanh":
+            chay_nhanh(cfg)
         elif che_do == "kiem-tra":
             chay_kiem_tra(cfg)
         else:

@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "5 0 * * 2-6"    # 07:05 giờ VN, thứ 3 → thứ 7 (sau khi Mỹ đóng cửa)
     - cron: "20 8 * * 1-5"   # 15:20 giờ VN, thứ 2 → thứ 6 (sau phiên Việt Nam)
+    - cron: "*/15 2-7 * * 1-5"    # 15 phút/lần, 9:00–14:45 giờ VN (phiên Việt Nam)
+    - cron: "*/15 13-20 * * 1-5"  # 15 phút/lần, 20:00–3:45 giờ VN (phiên Mỹ)
   workflow_dispatch:          # cho phép bấm nút "Run workflow" để chạy tay
     inputs:
       che_do:
@@ -13,6 +15,7 @@ on:
         options:
           - chieu
           - sang
+          - nhanh
           - kiem-tra
       quet_bctc:
         description: "Quét báo cáo tài chính ngay (chỉ áp dụng cho bản tin chiều)"
@@ -51,8 +54,10 @@ jobs:
             [ "${{ inputs.quet_bctc }}" = "true" ] && CHE_DO="$CHE_DO --bctc"
           elif [ "${{ github.event.schedule }}" = "5 0 * * 2-6" ]; then
             CHE_DO="sang"
-          else
+          elif [ "${{ github.event.schedule }}" = "20 8 * * 1-5" ]; then
             CHE_DO="chieu"
+          else
+            CHE_DO="nhanh"
           fi
           echo "che_do=$CHE_DO" >> "$GITHUB_OUTPUT"
           echo "Chế độ: $CHE_DO"
@@ -61,7 +66,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
           TZ: Asia/Ho_Chi_Minh
         run: python main.py ${{ steps.chon.outputs.che_do }}
 
@@ -71,5 +75,6 @@ jobs:
           git config user.name "bot-chung-khoan"
           git config user.email "bot-chung-khoan@users.noreply.github.com"
           git add data/ || true
-          git diff --cached --quiet || git commit -m "Cập nhật dữ liệu $(date +'%d/%m/%Y')"
-          git push || echo "Không lưu được lịch sử (không ảnh hưởng bản tin)"
+          git diff --cached --quiet || git commit -q -m "Cập nhật dữ liệu $(date +'%d/%m/%Y %H:%M')"
+          git pull -q --rebase || true
+          git push -q || echo "Không lưu được lịch sử (không ảnh hưởng bản tin)"

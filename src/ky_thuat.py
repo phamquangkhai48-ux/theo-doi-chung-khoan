@@ -51,8 +51,12 @@ def _cat_xuong(a_nay, b_nay, a_truoc, b_truoc) -> bool:
     return all(pd.notna(v) for v in vals) and a_truoc >= b_truoc and a_nay < b_nay
 
 
-def phan_tich(ma: str, df_gia: pd.DataFrame, cfg: dict) -> dict:
-    """Trả về dict gồm giá, % thay đổi, danh sách tín hiệu, tổng điểm, xu hướng."""
+def phan_tich(ma: str, df_gia: pd.DataFrame, cfg: dict, ty_le_phien: float = 1.0) -> dict:
+    """
+    Trả về dict gồm giá, % thay đổi, danh sách tín hiệu, tổng điểm, xu hướng.
+    ty_le_phien: phần phiên đã trôi qua (0–1). Trong phiên, khối lượng được quy đổi
+    ra cả phiên để so với trung bình 20 phiên.
+    """
     df = them_chi_bao(df_gia, cfg)
     nay, truoc = df.iloc[-1], df.iloc[-2]
     d = cfg["diem"]
@@ -88,7 +92,7 @@ def phan_tich(ma: str, df_gia: pd.DataFrame, cfg: dict) -> dict:
         them("MACD cắt xuống đường tín hiệu", "macd_cat_xuong")
 
     if pd.notna(nay.kl_tb20) and nay.kl_tb20 > 0:
-        ty_le_kl = nay.volume / nay.kl_tb20
+        ty_le_kl = nay.volume / max(ty_le_phien, 0.15) / nay.kl_tb20
         if ty_le_kl >= cfg["khoi_luong_dot_bien"]:
             if nay.close > truoc.close:
                 them(f"Khối lượng gấp {so(ty_le_kl, 1)} lần TB20, giá tăng", "kl_dot_bien_tang")

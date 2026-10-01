@@ -93,27 +93,37 @@ def goi_vci(method: str, url: str, **kw):
 
 
 # ======================================================================
-# DANH SÁCH VN30
+# DANH SÁCH CỔ PHIẾU THEO NHÓM (VN30, VN100, ...)
 # ======================================================================
-def lay_danh_sach_vn30() -> list[str]:
+SO_MA_NHOM = {"VN30": (25, 35), "VN100": (85, 110), "VNMIDCAP": (50, 90), "HNX30": (25, 35)}
+
+
+def lay_danh_sach_nhom(nhom: str = "VN30") -> list[str]:
+    nhom = nhom.upper()
+    tu, den = SO_MA_NHOM.get(nhom, (5, 600))
     try:
-        data = goi_vci("GET", VCI_TRADING + "price/symbols/getByGroup", params={"group": "VN30"})
+        data = goi_vci("GET", VCI_TRADING + "price/symbols/getByGroup", params={"group": nhom})
         if isinstance(data, dict):
             data = data.get("data") or []
         ma = [str(x.get("symbol", "")).upper() for x in data if isinstance(x, dict)]
-        ma = [m for m in ma if re.fullmatch(r"[A-Z0-9]{3}", m)]
-        if 25 <= len(ma) <= 35:
-            return sorted(set(ma))
+        ma = sorted({m for m in ma if re.fullmatch(r"[A-Z0-9]{3}", m)})
+        if tu <= len(ma) <= den:
+            return ma
+        log.warning("Nhóm %s trả về %d mã — bất thường, bỏ qua", nhom, len(ma))
     except Exception as e:  # noqa: BLE001
-        log.debug("Lấy VN30 lỗi: %s", e)
+        log.debug("Lấy nhóm %s lỗi: %s", nhom, e)
     return []
+
+
+def lay_danh_sach_vn30() -> list[str]:
+    return lay_danh_sach_nhom("VN30")
 
 
 # ======================================================================
 # GIÁ CỔ PHIẾU VIỆT NAM
 # ======================================================================
-def chuan_hoa_gia(df: pd.DataFrame) -> pd.DataFrame | None:
-    """Đưa về dạng: index = ngày, cột open/high/low/close/volume; giá theo NGHÌN đồng."""
+def chuan_hoa_gia(df: pd.DataFrame, la_chi_so: bool = False) -> pd.DataFrame | None:
+    """Đưa về dạng: index = ngày, cột open/high/low/close/volume; giá cổ phiếu theo NGHÌN đồng."""
     if df is None or len(df) == 0:
         return None
     df = df.copy()
@@ -139,28 +149,76 @@ def chuan_hoa_gia(df: pd.DataFrame) -> pd.DataFrame | None:
     for c in can[1:]:
         df[c] = pd.to_numeric(df[c], errors="coerce")
     # Một số nguồn trả giá theo đồng (105000), một số theo nghìn đồng (105.0)
-    if df["close"].median() > 1000:
+    if not la_chi_so and df["close"].median() > 1000:
         for c in ["open", "high", "low", "close"]:
             df[c] = df[c] / 1000
     return df
 
 
-def _gia_vci(ma: str, so_ngay: int) -> pd.DataFrame | None:
-    so_phien = int(so_ngay * 5 / 7) + 10
-    den = int(time.time()) + 86400
-    data = goi_vci("POST", VCI_TRADING + "chart/OHLCChart/gap-chart",
-                   json={"timeFrame": "ONE_DAY", "symbols": [ma], "to": den, "countBack": so_phien})
-    if isinstance(data, dict):
-        data = data.get("data") or []
-    if not data or not isinstance(data, list) or not data[0].get("c"):
+def _bang_tu_vci(d: dict, la_chi_so: bool = False) -> pd.DataFrame | None:
+    if not isinstance(d, dict) or not d.get("c"):
         return None
-    d = data[0]
     t = pd.to_numeric(pd.Series(d["t"]), errors="coerce")
     df = pd.DataFrame({
         "time": (pd.to_datetime(t, unit="s") + pd.Timedelta(hours=7)).dt.normalize(),
         "open": d["o"], "high": d["h"], "low": d["l"], "close": d["c"], "volume": d["v"],
     })
-    return chuan_hoa_gia(df)
+    return chuan_hoa_gia(df, la_chi_so)
+
+
+def _goi_bieu_do(ma_list: list[str], so_ngay: int) -> list:
+    so_phien = int(so_ngay * 5 / 7) + 10
+    den = int(time.time()) + 86400
+    data = goi_vci("POST", VCI_TRADING + "chart/OHLCChart/gap-chart",
+                   json={"timeFrame": "ONE_DAY", "symbols": ma_list, "to": den, "countBack": so_phien})
+    if isinstance(data, dict):
+        data = data.get("data") or []
+    return data if isinstance(data, list) else []
+
+
+def _gia_vci(ma: str, so_ngay: int, la_chi_so: bool = False) -> pd.DataFrame | None:
+    data = _goi_bieu_do([ma], so_ngay)
+    return _bang_tu_vci(data[0], la_chi_so) if data else None
+
+
+def lay_gia_nhieu_ma(ds: list[str], so_ngay: int = 420, la_chi_so: bool = False,
+                     lo: int = 20) -> dict[str, tuple[pd.DataFrame, str]]:
+    """
+    Lấy giá nhiều mã: gọi Vietcap theo lô (nhanh), mã nào thiếu thì gọi riêng,
+    vẫn thiếu thì thử Yahoo. Trả về {mã: (bảng giá, nguồn)}.
+    """
+    kq: dict[str, tuple[pd.DataFrame, str]] = {}
+    for i in range(0, len(ds), lo):
+        nhom = ds[i:i + lo]
+        try:
+            data = _goi_bieu_do(nhom, so_ngay)
+            # Chỉ nhận khi mỗi phần tử ghi rõ mã (tránh gán nhầm giá giữa các mã)
+            goc = {m.upper(): m for m in nhom}
+            for d in data:
+                if isinstance(d, dict) and d.get("symbol"):
+                    ma = goc.get(str(d["symbol"]).upper())
+                    if ma:
+                        df = _bang_tu_vci(d, la_chi_so)
+                        if df is not None and len(df) >= 30:
+                            kq[ma] = (df, "vietcap")
+        except Exception as e:  # noqa: BLE001
+            log.debug("Lô %s lỗi: %s", nhom[:3], e)
+    thieu = [m for m in ds if m not in kq]
+    if thieu:
+        log.info("Lấy riêng %d mã còn thiếu", len(thieu))
+    for ma in thieu:
+        if la_chi_so:
+            try:
+                df = _gia_vci(ma, so_ngay, True)
+                if df is not None and len(df) >= 30:
+                    kq[ma] = (df, "vietcap")
+            except Exception as e:  # noqa: BLE001
+                log.debug("Chỉ số %s lỗi: %s", ma, e)
+            continue
+        df, nguon = lay_gia_co_phieu(ma, so_ngay)
+        if df is not None:
+            kq[ma] = (df, nguon)
+    return kq
 
 
 def lay_gia_co_phieu(ma: str, so_ngay: int = 420) -> tuple[pd.DataFrame | None, str]:

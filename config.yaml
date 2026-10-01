@@ -7,10 +7,10 @@
 # ---------------------------------------------------------------------
 # 1. DANH SÁCH CỔ PHIẾU
 # ---------------------------------------------------------------------
-# tu_dong_lay_vn30: true  -> chương trình tự lấy danh sách VN30 mới nhất.
-# Nếu không lấy được, sẽ dùng danh sách dự phòng bên dưới
+# Nhóm cổ phiếu theo dõi: VN30 hoặc VN100. Chương trình tự lấy danh sách mới nhất
+# từ Vietcap. Nếu không lấy được, dùng danh sách VN30 dự phòng bên dưới
 # (rổ VN30 kỳ tháng 7/2026, hiệu lực từ 03/08/2026; HOSE rà soát lại vào tháng 1 và tháng 7).
-tu_dong_lay_vn30: true
+nhom_co_phieu: VN100
 
 vn30_du_phong: [ACB, BID, CTG, HDB, LPB, MBB, SHB, SSB, STB, TCB, VCB, VIB, VPB,
                 SSI, TCX, FPT, HPG, GAS, BSR, VJC, VIC, VHM, VRE, VPL,
@@ -101,11 +101,19 @@ vi_mo:
     - {ten: "Shanghai",       ma: "000001.SS", nhom: chau_a, nguong_ngay: 2}
     - {ten: "CSI 300",        ma: "000300.SS", nhom: chau_a, nguong_ngay: 2}
     - {ten: "Hang Seng",      ma: "^HSI",      nhom: chau_a, nguong_ngay: 2.5}
+    - {ten: "KOSPI",          ma: "^KS11",     nhom: chau_a, nguong_ngay: 2.5}
+    - {ten: "DAX (Đức)",      ma: "^GDAXI",    nhom: chau_au, nguong_ngay: 2}
+    - {ten: "FTSE 100 (Anh)", ma: "^FTSE",     nhom: chau_au, nguong_ngay: 2}
+    - {ten: "Euro Stoxx 50",  ma: "^STOXX50E", nhom: chau_au, nguong_ngay: 2}
     - {ten: "DXY",            ma: "DX-Y.NYB",  nhom: tien_te, nguong_ngay: 0.7}
     - {ten: "USD/VND (quốc tế)", ma: "USDVND=X", nhom: tien_te, nguong_ngay: 0.3}
     - {ten: "USD/JPY",        ma: "JPY=X",     nhom: tien_te, nguong_ngay: 1}
     - {ten: "USD/CNY",        ma: "CNY=X",     nhom: tien_te, nguong_ngay: 0.5}
     - {ten: "Vàng thế giới",  ma: "GC=F",      nhom: hang_hoa, nguong_ngay: 2}
+    - {ten: "Bạc",            ma: "SI=F",      nhom: hang_hoa, nguong_ngay: 3}
+    - {ten: "Đồng",           ma: "HG=F",      nhom: hang_hoa, nguong_ngay: 2.5}
+    - {ten: "Dầu Brent",      ma: "BZ=F",      nhom: hang_hoa, nguong_ngay: 3}
+    - {ten: "Dầu WTI",        ma: "CL=F",      nhom: hang_hoa, nguong_ngay: 3}
     - {ten: "Bitcoin",        ma: "BTC-USD",   nhom: hang_hoa, nguong_ngay: 5}
     - {ten: "Lợi suất 10N Mỹ", ma: "^TNX",     nhom: loi_suat, nguong_ngay: 0.12, la_loi_suat: true}
   # Lợi suất 10 năm Việt Nam và Nhật (lấy từ TradingView, dự phòng FRED cho Nhật)
@@ -119,7 +127,22 @@ vi_mo:
   chenh_lech_vang_sjc_canh_bao: 15   # vàng SJC cao hơn thế giới > 15% thì cảnh báo
 
 # ---------------------------------------------------------------------
-# 6. KHÁC
+# 6. CẬP NHẬT 15 PHÚT
+# ---------------------------------------------------------------------
+# Trong phiên VN (9:00–15:00) và phiên Mỹ (20:00–4:00 sáng), cứ 15 phút quét một lần.
+# Chỉ nhắn khi có cảnh báo MỚI (mỗi cảnh báo chỉ báo 1 lần/ngày); mỗi giờ gửi thêm tóm tắt.
+# Muốn tắt: đổi "bat: true" thành "bat: false".
+cap_nhat_15_phut:
+  bat: true
+  tom_tat_moi_gio: true
+  so_ma_top: 5                      # số mã tăng/giảm mạnh nhất hiện trong tóm tắt
+  buoc_bien_dong_co_phieu: 3        # báo khi cổ phiếu tăng/giảm vượt mỗi nấc 3% (3%, 6%)
+  tran_san: 6.5                     # tăng/giảm từ 6,5% = sát trần/sàn (HOSE ±7%)
+  buoc_bien_dong_chi_so_vn: 1.5     # báo khi VN-Index, VN30, HNX tăng/giảm vượt mỗi nấc 1,5%
+  # Với chỉ số thế giới, ngưỡng là "nguong_ngay" của từng chỉ số ở mục 5.
+
+# ---------------------------------------------------------------------
+# 7. KHÁC
 # ---------------------------------------------------------------------
 # Nghỉ giữa các lần gọi dữ liệu Vietcap (giây) để không bị chặn.
 nghi_giua_cac_lan_goi: 1.5

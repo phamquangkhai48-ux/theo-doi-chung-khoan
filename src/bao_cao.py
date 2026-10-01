@@ -8,9 +8,9 @@ from .thong_bao import esc
 
 GIO_VN = ZoneInfo("Asia/Ho_Chi_Minh")
 
-CO = {"my": "🇺🇸", "chau_a": "🌏", "tien_te": "💵", "hang_hoa": "🥇", "loi_suat": "📈"}
-TEN_NHOM = {"my": "Chứng khoán Mỹ", "chau_a": "Chứng khoán châu Á", "tien_te": "Tiền tệ",
-            "hang_hoa": "Vàng & Bitcoin", "loi_suat": "Lợi suất trái phiếu 10 năm"}
+CO = {"my": "🇺🇸", "chau_au": "🇪🇺", "chau_a": "🌏", "tien_te": "💵", "hang_hoa": "🛢", "loi_suat": "📈"}
+TEN_NHOM = {"my": "Chứng khoán Mỹ", "chau_au": "Chứng khoán châu Âu", "chau_a": "Chứng khoán châu Á", "tien_te": "Tiền tệ",
+            "hang_hoa": "Hàng hóa & Bitcoin", "loi_suat": "Lợi suất trái phiếu 10 năm"}
 
 
 def so(x, le=2) -> str:
@@ -37,7 +37,7 @@ def ban_tin_vi_mo(vm: dict, tieu_de: str) -> str:
         dong += [f"• {esc(c)}" for c in vm["canh_bao"]]
         dong.append("")
 
-    for nhom in ["my", "chau_a", "tien_te", "hang_hoa", "loi_suat"]:
+    for nhom in ["my", "chau_au", "chau_a", "tien_te", "hang_hoa", "loi_suat"]:
         muc = [c for c in vm["chi_so"] if c["nhom"] == nhom]
         if nhom == "loi_suat":
             muc_khac = vm.get("loi_suat", [])
@@ -99,7 +99,7 @@ def ban_tin_co_phieu(ky_thuat: list[dict], co_ban: dict[str, dict], bctc_moi: li
     kt_cfg = cfg["ky_thuat"]
     tich_cuc = sorted([k for k in ky_thuat if k["diem"] >= kt_cfg["nguong_tich_cuc"]], key=lambda k: -k["diem"])
     tieu_cuc = sorted([k for k in ky_thuat if k["diem"] <= kt_cfg["nguong_tieu_cuc"]], key=lambda k: k["diem"])
-    khac = [k for k in ky_thuat if k not in tich_cuc and k not in tieu_cuc and k["tin_hieu"]]
+    khac = [k for k in ky_thuat if k not in tich_cuc and k not in tieu_cuc and k["diem"] != 0]
 
     ngay = ky_thuat[0]["ngay"] if ky_thuat else datetime.now(GIO_VN).date().isoformat()
     ngay_vn = datetime.fromisoformat(ngay).strftime("%d/%m/%Y")
@@ -108,7 +108,7 @@ def ban_tin_co_phieu(ky_thuat: list[dict], co_ban: dict[str, dict], bctc_moi: li
     xh_tang = sum(1 for k in ky_thuat if k["xu_huong"] == "tăng")
     xh_giam = sum(1 for k in ky_thuat if k["xu_huong"] == "giảm")
 
-    dong = [f"<b>📊 VN30 — phiên {ngay_vn}</b>",
+    dong = [f"<b>📊 {esc(cfg.get('nhom_co_phieu', 'VN30'))} — phiên {ngay_vn}</b>",
             f"Tăng {tang} · Giảm {giam} · Đứng {len(ky_thuat) - tang - giam}  |  "
             f"Xu hướng tăng {xh_tang} mã · giảm {xh_giam} mã", ""]
 
