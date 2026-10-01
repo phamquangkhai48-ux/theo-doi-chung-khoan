@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: "5 0 * * 2-6"    # 07:05 giờ VN, thứ 3 → thứ 7 (sau khi Mỹ đóng cửa)
     - cron: "20 8 * * 1-5"   # 15:20 giờ VN, thứ 2 → thứ 6 (sau phiên Việt Nam)
-    - cron: "*/15 2-7 * * 1-5"    # 15 phút/lần, 9:00–14:45 giờ VN (phiên Việt Nam)
     - cron: "*/15 13-20 * * 1-5"  # 15 phút/lần, 20:00–3:45 giờ VN (phiên Mỹ)
   workflow_dispatch:          # cho phép bấm nút "Run workflow" để chạy tay
     inputs:
@@ -66,6 +65,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DANH_MUC: ${{ secrets.DANH_MUC }}
           TZ: Asia/Ho_Chi_Minh
         run: python main.py ${{ steps.chon.outputs.che_do }}
 
