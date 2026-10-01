@@ -27,6 +27,8 @@ MAU_LOI_NHUAN = [
     (["loi nhuan sau thue"], ["truoc", "%", "tang truong", "khong kiem soat", "thieu so"]),
     (["net profit"], ["before", "%", "growth", "minority", "margin"]),
     (["profit after tax"], ["before", "%", "growth", "minority"]),
+    (["net income common stockholders"], []),                    # Yahoo Finance
+    (["net income"], ["continuing", "minority", "non controlling", "interest", "%"]),
 ]
 MAU_LOI_NHUAN_GOP = [
     (["loi nhuan gop"], ["%", "bien", "tang truong"]),

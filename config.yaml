@@ -121,6 +121,5 @@ vi_mo:
 # ---------------------------------------------------------------------
 # 6. KHÁC
 # ---------------------------------------------------------------------
-# Nghỉ giữa các lần gọi dữ liệu (giây) để không bị nguồn dữ liệu chặn.
-# Nếu có API key vnstock (đăng ký miễn phí) có thể giảm xuống 1.2
-nghi_giua_cac_lan_goi: 3.2
+# Nghỉ giữa các lần gọi dữ liệu Vietcap (giây) để không bị chặn.
+nghi_giua_cac_lan_goi: 1.5

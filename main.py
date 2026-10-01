@@ -156,7 +156,7 @@ def chay_chieu(cfg: dict, ep_bctc: bool = False):
     ghi_lich_su(ket_qua_kt)
 
     if "yahoo" in nguon_dung:
-        log.warning("Một số mã lấy giá từ Yahoo (dự phòng) do vnstock không trả dữ liệu.")
+        log.warning("Một số mã lấy giá từ Yahoo (dự phòng) do Vietcap không trả dữ liệu.")
 
     thong_bao.gui(bao_cao.ban_tin_co_phieu(ket_qua_kt, ket_qua_cb, bctc_moi, canh_bao_dm, loi, cfg,
                                            co_chay_bctc=bool(ket_qua_cb)))
@@ -172,12 +172,6 @@ def chay_kiem_tra(cfg: dict):
 
     def ghi(ten, ok, chi_tiet=""):
         dong.append(f"{'✅' if ok else '❌'} {thong_bao.esc(ten)}{': ' + thong_bao.esc(chi_tiet) if chi_tiet else ''}")
-
-    try:
-        import vnstock
-        ghi("Thư viện vnstock", True, f"phiên bản {getattr(vnstock, '__version__', '?')}")
-    except Exception as e:  # noqa: BLE001
-        ghi("Thư viện vnstock", False, str(e)[:150])
 
     vn30 = nd.lay_danh_sach_vn30()
     ghi("Danh sách VN30 tự động", bool(vn30), f"{len(vn30)} mã" if vn30 else "sẽ dùng danh sách dự phòng")

@@ -1,10 +1,9 @@
 """
-Lấy dữ liệu từ các nguồn: vnstock (cổ phiếu VN, BCTC), yfinance (chỉ số thế giới),
+Lấy dữ liệu từ các nguồn: Vietcap (giá cổ phiếu VN, VN30, BCTC — gọi thẳng API),
+Yahoo Finance (chỉ số thế giới; dự phòng giá & BCTC cổ phiếu VN),
 TradingView / FRED (lợi suất trái phiếu), Vietcombank (tỷ giá), SJC (giá vàng).
 
 Nguyên tắc: mỗi hàm tự thử nhiều cách, lỗi ở một nguồn KHÔNG làm dừng chương trình.
-Thư viện vnstock thay đổi cú pháp giữa các phiên bản, nên mỗi hàm thử lần lượt
-cú pháp mới (v4) rồi đến cú pháp cũ (v3).
 """
 from __future__ import annotations
 
@@ -28,7 +27,7 @@ _lan_goi_cuoi = 0.0
 
 
 def nghi():
-    """Giãn cách các lần gọi vnstock để không vượt giới hạn (khách: ~20 lần/phút)."""
+    """Giãn cách các lần gọi Vietcap để không bị chặn."""
     global _lan_goi_cuoi
     cho = NGHI_GIAY - (time.time() - _lan_goi_cuoi)
     if cho > 0:
@@ -44,66 +43,69 @@ def bo_dau(s) -> str:
     return re.sub(r"\s+", " ", s.lower()).strip()
 
 
-def _dang_nhap_vnstock():
-    """Nếu có API key (GitHub Secret VNSTOCK_API_KEY) thì dùng để tăng giới hạn."""
-    key = os.environ.get("VNSTOCK_API_KEY", "").strip()
-    if not key:
-        return
-    for ten_ham in ("change_api_key", "register_user"):
+# ======================================================================
+# KẾT NỐI VIETCAP (VCI) — gọi thẳng, không cần thư viện vnstock
+# (vnstock đã bị gỡ khỏi PyPI từ cuối tháng 9/2026)
+# ======================================================================
+VCI_TRADING = "https://trading.vietcap.com.vn/api/"
+VCI_IQ = "https://iq.vietcap.com.vn/api/iq-insight-service"
+VCI_HEADERS = {
+    **UA,
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Content-Type": "application/json",
+    "Referer": "https://trading.vietcap.com.vn/",
+    "Origin": "https://trading.vietcap.com.vn",
+}
+_phien_vci: requests.Session | None = None
+
+
+def phien_vci() -> requests.Session:
+    """Mở một phiên làm việc với Vietcap (lấy cookie từ trang bảng giá)."""
+    global _phien_vci
+    if _phien_vci is None:
+        s = requests.Session()
+        s.headers.update(VCI_HEADERS)
         try:
-            import vnstock
-            ham = getattr(vnstock, ten_ham, None)
-            if ham:
-                ham(key) if ten_ham == "change_api_key" else ham(api_key=key)
-                log.info("Đã dùng API key vnstock")
-                return
+            s.get("https://trading.vietcap.com.vn/priceboard", timeout=15)
         except Exception as e:  # noqa: BLE001
-            log.debug("Không dùng được API key qua %s: %s", ten_ham, e)
+            log.debug("Mở phiên Vietcap lỗi: %s", e)
+        _phien_vci = s
+    return _phien_vci
 
 
-_dang_nhap_vnstock()
+def goi_vci(method: str, url: str, **kw):
+    """Gọi API Vietcap, thử lại tối đa 3 lần."""
+    loi = None
+    for lan in range(3):
+        nghi()
+        try:
+            r = phien_vci().request(method, url, timeout=25, **kw)
+            if r.status_code == 429:
+                time.sleep(10 * (lan + 1))
+                continue
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:  # noqa: BLE001
+            loi = e
+            time.sleep(2 * (lan + 1))
+    raise RuntimeError(f"Vietcap lỗi: {loi}")
 
 
 # ======================================================================
 # DANH SÁCH VN30
 # ======================================================================
-def _lay_ma_tu_bang(obj) -> list[str]:
-    if obj is None:
-        return []
-    if isinstance(obj, pd.Series):
-        vals = obj.tolist()
-    elif isinstance(obj, pd.DataFrame):
-        cot = next((c for c in obj.columns if bo_dau(c) in ("symbol", "ticker", "ma", "code")), obj.columns[0])
-        vals = obj[cot].tolist()
-    else:
-        vals = list(obj)
-    return [str(v).strip().upper() for v in vals if re.fullmatch(r"[A-Za-z0-9]{3}", str(v).strip())]
-
-
 def lay_danh_sach_vn30() -> list[str]:
-    cach_thu = []
-
-    def v4():
-        from vnstock import Reference
-        return Reference().equity.list_by_group(group="VN30")
-
-    def v3():
-        from vnstock import Listing
-        return Listing().symbols_by_group("VN30")
-
-    def v3_cu():
-        from vnstock import Vnstock
-        return Vnstock().stock(symbol="ACB", source="VCI").listing.symbols_by_group("VN30")
-
-    cach_thu = [v4, v3, v3_cu]
-    for ham in cach_thu:
-        try:
-            nghi()
-            ma = _lay_ma_tu_bang(ham())
-            if 25 <= len(ma) <= 35:
-                return sorted(set(ma))
-        except Exception as e:  # noqa: BLE001
-            log.debug("Lấy VN30 bằng %s lỗi: %s", ham.__name__, e)
+    try:
+        data = goi_vci("GET", VCI_TRADING + "price/symbols/getByGroup", params={"group": "VN30"})
+        if isinstance(data, dict):
+            data = data.get("data") or []
+        ma = [str(x.get("symbol", "")).upper() for x in data if isinstance(x, dict)]
+        ma = [m for m in ma if re.fullmatch(r"[A-Z0-9]{3}", m)]
+        if 25 <= len(ma) <= 35:
+            return sorted(set(ma))
+    except Exception as e:  # noqa: BLE001
+        log.debug("Lấy VN30 lỗi: %s", e)
     return []
 
 
@@ -143,35 +145,36 @@ def chuan_hoa_gia(df: pd.DataFrame) -> pd.DataFrame | None:
     return df
 
 
+def _gia_vci(ma: str, so_ngay: int) -> pd.DataFrame | None:
+    so_phien = int(so_ngay * 5 / 7) + 10
+    den = int(time.time()) + 86400
+    data = goi_vci("POST", VCI_TRADING + "chart/OHLCChart/gap-chart",
+                   json={"timeFrame": "ONE_DAY", "symbols": [ma], "to": den, "countBack": so_phien})
+    if isinstance(data, dict):
+        data = data.get("data") or []
+    if not data or not isinstance(data, list) or not data[0].get("c"):
+        return None
+    d = data[0]
+    t = pd.to_numeric(pd.Series(d["t"]), errors="coerce")
+    df = pd.DataFrame({
+        "time": (pd.to_datetime(t, unit="s") + pd.Timedelta(hours=7)).dt.normalize(),
+        "open": d["o"], "high": d["h"], "low": d["l"], "close": d["c"], "volume": d["v"],
+    })
+    return chuan_hoa_gia(df)
+
+
 def lay_gia_co_phieu(ma: str, so_ngay: int = 420) -> tuple[pd.DataFrame | None, str]:
-    """Trả về (bảng giá, tên nguồn)."""
-    bat_dau = (date.today() - timedelta(days=so_ngay)).isoformat()
-    ket_thuc = date.today().isoformat()
+    """Trả về (bảng giá, tên nguồn). Thử Vietcap trước, dự phòng Yahoo Finance."""
+    try:
+        df = _gia_vci(ma, so_ngay)
+        if df is not None and len(df) >= 30:
+            return df, "vietcap"
+    except Exception as e:  # noqa: BLE001
+        log.debug("%s: Vietcap lỗi: %s", ma, e)
 
-    def v4():
-        from vnstock import Market
-        return Market().equity.ohlcv(symbol=ma, start=bat_dau, end=ket_thuc)
-
-    def v3():
-        from vnstock import Vnstock
-        return Vnstock().stock(symbol=ma, source="VCI").quote.history(start=bat_dau, end=ket_thuc, interval="1D")
-
-    def v3_quote():
-        from vnstock import Quote
-        return Quote(symbol=ma, source="VCI").history(start=bat_dau, end=ket_thuc, interval="1D")
-
-    for ten, ham in (("vnstock", v4), ("vnstock", v3), ("vnstock", v3_quote)):
-        try:
-            nghi()
-            df = chuan_hoa_gia(ham())
-            if df is not None and len(df) >= 30:
-                return df, ten
-        except Exception as e:  # noqa: BLE001
-            log.debug("%s: %s lỗi: %s", ma, ham.__name__, e)
-
-    # Dự phòng: Yahoo Finance (mã .VN)
     try:
         import yfinance as yf
+        bat_dau = (date.today() - timedelta(days=so_ngay)).isoformat()
         df = yf.download(f"{ma}.VN", start=bat_dau, progress=False, auto_adjust=False, threads=False)
         df = chuan_hoa_gia(df)
         if df is not None and len(df) >= 30:
@@ -184,39 +187,70 @@ def lay_gia_co_phieu(ma: str, so_ngay: int = 420) -> tuple[pd.DataFrame | None, 
 # ======================================================================
 # BÁO CÁO TÀI CHÍNH
 # ======================================================================
+_TEN_CHI_TIEU: dict[str, str] = {}
+_DOI_TEN_CHI_SO = {"roe": "roe", "pe": "p/e", "pb": "p/b", "debtToEquity": "no/vcsh",
+                   "debtPerEquity": "no/vcsh (2)", "year": "year", "quarter": "quarter"}
+
+
+def _ten_chi_tieu(ma: str) -> dict[str, str]:
+    """Bảng đổi mã chỉ tiêu Vietcap (vd 'isa3') sang tên tiếng Việt. Lấy một lần."""
+    if not _TEN_CHI_TIEU:
+        data = (goi_vci("GET", f"{VCI_IQ}/v1/company/{ma}/financial-statement/metrics") or {}).get("data") or {}
+        uu_tien = sorted(data.keys(), key=lambda k: 0 if "INCOME" in str(k).upper() else 1)
+        for k in uu_tien:
+            for dong in data[k] or []:
+                f = dong.get("field")
+                ten = dong.get("titleVi") or dong.get("fullTitleVi") or dong.get("titleEn")
+                if f and ten and f not in _TEN_CHI_TIEU:
+                    _TEN_CHI_TIEU[f] = ten
+    return _TEN_CHI_TIEU
+
+
+def _bctc_vci(ma: str, loai: str) -> pd.DataFrame | None:
+    if loai == "income":
+        data = (goi_vci("GET", f"{VCI_IQ}/v1/company/{ma}/financial-statement",
+                        params={"section": "INCOME_STATEMENT"}) or {}).get("data") or {}
+        quy = data.get("quarters") or []
+        if not quy:
+            return None
+        df = pd.DataFrame(quy)
+        try:
+            ten = _ten_chi_tieu(ma)
+            df = df.rename(columns={c: ten[c] for c in df.columns if c in ten})
+        except Exception as e:  # noqa: BLE001
+            log.debug("Không lấy được tên chỉ tiêu: %s", e)
+        return df
+    data = (goi_vci("GET", f"{VCI_IQ}/v1/company/{ma}/statistics-financial") or {}).get("data") or []
+    if not data:
+        return None
+    df = pd.DataFrame(data)
+    return df.rename(columns={c: v for c, v in _DOI_TEN_CHI_SO.items() if c in df.columns})
+
+
+def _bctc_yahoo(ma: str, loai: str) -> pd.DataFrame | None:
+    """Dự phòng: báo cáo kết quả kinh doanh theo quý từ Yahoo Finance (thường chỉ 4–5 quý)."""
+    if loai != "income":
+        return None
+    import yfinance as yf
+    bang = yf.Ticker(f"{ma}.VN").quarterly_income_stmt
+    if bang is None or bang.empty:
+        return None
+    df = bang.T.copy()
+    ngay = pd.to_datetime(df.index)
+    df.insert(0, "year", ngay.year)
+    df.insert(1, "quarter", (ngay.month - 1) // 3 + 1)
+    return df.reset_index(drop=True)
+
+
 def _goi_bctc(ma: str, loai: str):
     """loai: 'income' hoặc 'ratio'. Trả về DataFrame thô."""
-    def v4():
-        from vnstock import Fundamental
-        eq = Fundamental().equity
-        if loai == "income":
-            return eq.income_statement(symbol=ma, period="quarter")
-        return eq.ratios(symbol=ma, period="quarter")
-
-    def v3():
-        from vnstock import Vnstock
-        fin = Vnstock().stock(symbol=ma, source="VCI").finance
-        if loai == "income":
-            return fin.income_statement(period="quarter", lang="vi", dropna=True)
-        return fin.ratio(period="quarter", lang="vi", dropna=True)
-
-    def v3_finance():
-        from vnstock import Finance
-        fin = Finance(symbol=ma, source="VCI")
-        if loai == "income":
-            return fin.income_statement(period="quarter", lang="vi")
-        return fin.ratio(period="quarter", lang="vi")
-
-    loi = []
-    for ham in (v4, v3, v3_finance):
+    for ham in (_bctc_vci, _bctc_yahoo):
         try:
-            nghi()
-            df = ham()
+            df = ham(ma, loai)
             if df is not None and len(df) > 0:
                 return df
         except Exception as e:  # noqa: BLE001
-            loi.append(f"{ham.__name__}: {e}")
-    log.debug("%s: không lấy được %s: %s", ma, loai, " | ".join(loi))
+            log.debug("%s: %s %s lỗi: %s", ma, ham.__name__, loai, e)
     return None
 
 
@@ -412,17 +446,6 @@ def lay_ty_gia_vcb() -> dict | None:
                 return {"mua": mua, "ban": ban}
     except Exception as e:  # noqa: BLE001
         log.debug("VCB XML lỗi: %s", e)
-    try:  # dự phòng: hàm có sẵn trong một số bản vnstock
-        from vnstock.explorer.misc import vcb_exchange_rate
-        df = vcb_exchange_rate(date=date.today().isoformat())
-        df.columns = [bo_dau(c) for c in df.columns]
-        dong = df[df.iloc[:, 0].astype(str).str.upper().str.contains("USD")].iloc[0]
-        mua = _so(next(dong[c] for c in df.columns if "transfer" in c or "chuyen" in c))
-        ban = _so(next(dong[c] for c in df.columns if "sell" in c or "ban" in c))
-        if mua and ban:
-            return {"mua": mua, "ban": ban}
-    except Exception as e:  # noqa: BLE001
-        log.debug("VCB vnstock lỗi: %s", e)
     return None
 
 
@@ -450,15 +473,4 @@ def lay_gia_vang_sjc() -> dict | None:
                     return {"mua": _quy_ve_dong_luong(mua), "ban": _quy_ve_dong_luong(ban)}
     except Exception as e:  # noqa: BLE001
         log.debug("SJC lỗi: %s", e)
-    try:
-        from vnstock.explorer.misc import sjc_gold_price
-        df = sjc_gold_price()
-        df.columns = [bo_dau(c) for c in df.columns]
-        dong = df.iloc[0]
-        mua = _so(next(dong[c] for c in df.columns if "buy" in c or "mua" in c))
-        ban = _so(next(dong[c] for c in df.columns if "sell" in c or "ban" in c))
-        if mua and ban:
-            return {"mua": _quy_ve_dong_luong(mua), "ban": _quy_ve_dong_luong(ban)}
-    except Exception as e:  # noqa: BLE001
-        log.debug("SJC vnstock lỗi: %s", e)
     return None
