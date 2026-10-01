@@ -1,0 +1,50 @@
+name: Quet lien tuc trong phien
+
+on:
+  schedule:
+    - cron: "55 1 * * 1-5"   # 08:55 giờ VN: buổi sáng, quét mỗi phút đến 11:30
+    - cron: "55 5 * * 1-5"   # 12:55 giờ VN: buổi chiều, quét mỗi phút đến 14:45
+  workflow_dispatch:          # chạy tay: quét 1 lần rồi dừng (để thử)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quet-lien-tuc
+  cancel-in-progress: false
+
+jobs:
+  quet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 190
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cài Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Cài thư viện
+        run: pip install -r requirements.txt
+
+      - name: Quét liên tục
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DANH_MUC: ${{ secrets.DANH_MUC }}
+          TZ: Asia/Ho_Chi_Minh
+          PYTHONUNBUFFERED: "1"
+        run: python main.py lien-tuc
+
+      - name: Lưu trạng thái
+        if: always()
+        run: |
+          git config user.name "bot-chung-khoan"
+          git config user.email "bot-chung-khoan@users.noreply.github.com"
+          git add data/ || true
+          git diff --cached --quiet || git commit -q -m "Trạng thái quét $(date +'%d/%m/%Y %H:%M')"
+          git pull -q --rebase || true
+          git push -q || echo "Không lưu được trạng thái"
