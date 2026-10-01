@@ -28,6 +28,8 @@ nganh_tai_chinh: [ACB, BID, CTG, HDB, LPB, MBB, SHB, SSB, STB, TCB, VCB, VIB, VP
 # 2. DANH MỤC ĐANG NẮM GIỮ (tùy chọn)
 # ---------------------------------------------------------------------
 # Ghi các mã bạn đang có để nhận cảnh báo cắt lỗ / chốt lời.
+# KHO CÔNG KHAI: đừng ghi ở đây (ai cũng đọc được) — hãy cất vào GitHub Secret tên DANH_MUC
+# với nội dung giống hệt các dòng "- {ma: ...}" bên dưới. Hai nơi sẽ được gộp lại.
 # gia_mua tính theo NGHÌN ĐỒNG (ví dụ 105.5 nghĩa là 105.500 đ).
 # Bỏ dấu "#" ở đầu các dòng ví dụ để dùng.
 danh_muc: []
@@ -35,34 +37,21 @@ danh_muc: []
 #  - {ma: HPG, gia_mua: 27.3,  cat_lo_phan_tram: 7, chot_loi_phan_tram: 15}
 
 # ---------------------------------------------------------------------
-# 3. TÍN HIỆU KỸ THUẬT (chạy mỗi ngày sau phiên)
+# 3. DÒNG TIỀN BẤT THƯỜNG (khối lượng, khối ngoại, lệnh mua/bán chủ động)
 # ---------------------------------------------------------------------
-ky_thuat:
-  ma_ngan: 20            # đường trung bình ngắn (MA20)
-  ma_trung: 50           # MA50
-  ma_dai: 200            # MA200
-  rsi_chu_ky: 14
-  rsi_qua_ban: 30        # RSI dưới mức này = quá bán
-  rsi_qua_mua: 70        # RSI trên mức này = quá mua
-  khoi_luong_dot_bien: 1.5   # khối lượng > 1,5 lần trung bình 20 phiên
-  # Điểm của từng tín hiệu. Tổng điểm >= 2 là "tích cực", <= -2 là "tiêu cực".
-  diem:
-    cat_len_ma_ngan: 1
-    cat_xuong_ma_ngan: -1
-    vuot_ma_trung: 1
-    thung_ma_trung: -2
-    giao_cat_vang: 2       # MA50 cắt lên MA200
-    giao_cat_tu_than: -2   # MA50 cắt xuống MA200
-    rsi_qua_ban: 1
-    rsi_qua_mua: -1
-    macd_cat_len: 1
-    macd_cat_xuong: -1
-    kl_dot_bien_tang: 1
-    kl_dot_bien_giam: -1
-    dinh_52_tuan: 1
-    day_52_tuan: -1
-  nguong_tich_cuc: 2
-  nguong_tieu_cuc: -2
+# Giá trị tính theo TỶ đồng.
+dong_tien:
+  kl_dot_bien_ngay: [2, 3, 5]       # KL trong ngày (quy đổi cả phiên) gấp 2/3/5 lần TB 20 phiên
+  cua_so_phut: 5                    # so sánh khối lượng trong 5 phút gần nhất
+  kl_dot_bien_cua_so: 5             # KL 5 phút gấp 5 lần nhịp bình thường của mã đó
+  gia_tri_cua_so_toi_thieu_ty: 3    # ...và giá trị khớp trong 5 phút từ 3 tỷ trở lên
+  khoi_ngoai_rong_ty: [20, 50, 100, 200]   # khối ngoại mua/bán ròng trong ngày vượt các mức này
+  khoi_ngoai_cua_so_ty: 10          # khối ngoại mua/bán ròng trong 5 phút từ 10 tỷ
+  mua_ban_chu_dong_ty_le: 70        # mua (hoặc bán) chủ động chiếm từ 70% giá trị khớp
+  mua_ban_chu_dong_toi_thieu_ty: 5  # ...khi tổng giá trị khớp từ 5 tỷ
+  lenh_lon_ty: 2                    # lệnh lớn: một lệnh khớp từ 2 tỷ trở lên
+  lenh_lon_phan_tram_gtgd: 0.5      # ...và từ 0,5% giá trị giao dịch TB 1 phiên của mã đó
+  so_ma_soi_lenh: 10                # mỗi lần quét soi chi tiết lệnh của tối đa 10 mã bất thường nhất
 
 # ---------------------------------------------------------------------
 # 4. TÍN HIỆU BÁO CÁO TÀI CHÍNH (theo quý)
@@ -127,13 +116,15 @@ vi_mo:
   chenh_lech_vang_sjc_canh_bao: 15   # vàng SJC cao hơn thế giới > 15% thì cảnh báo
 
 # ---------------------------------------------------------------------
-# 6. CẬP NHẬT 15 PHÚT
+# 6. CẬP NHẬT TRONG PHIÊN
 # ---------------------------------------------------------------------
-# Trong phiên VN (9:00–15:00) và phiên Mỹ (20:00–4:00 sáng), cứ 15 phút quét một lần.
-# Chỉ nhắn khi có cảnh báo MỚI (mỗi cảnh báo chỉ báo 1 lần/ngày); mỗi giờ gửi thêm tóm tắt.
-# Muốn tắt: đổi "bat: true" thành "bat: false".
+# Phiên VN: quét LIÊN TỤC mỗi phút (cảnh báo gửi ngay). Phiên Mỹ (20:00–4:00): 15 phút/lần.
+# Chỉ nhắn khi có cảnh báo MỚI; mỗi giờ gửi thêm tóm tắt.
+# Muốn tắt cập nhật phiên Mỹ: đổi "bat: true" thành "bat: false".
 cap_nhat_15_phut:
   bat: true
+  lien_tuc: true                    # phiên VN quét mỗi phút (cần file lịch lien-tuc.yml)
+  chu_ky_lien_tuc_giay: 60
   tom_tat_moi_gio: true
   so_ma_top: 5                      # số mã tăng/giảm mạnh nhất hiện trong tóm tắt
   buoc_bien_dong_co_phieu: 3        # báo khi cổ phiếu tăng/giảm vượt mỗi nấc 3% (3%, 6%)

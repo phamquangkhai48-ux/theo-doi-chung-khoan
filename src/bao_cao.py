@@ -80,87 +80,93 @@ def ban_tin_vi_mo(vm: dict, tieu_de: str) -> str:
 
 
 # ======================================================================
-def _dong_co_phieu(kt: dict, cb: dict | None, chi_tiet=True) -> list[str]:
-    sao = " ⭐" if cb and cb.get("dat_chuan") and kt["diem"] > 0 else ""
-    dau_dong = (f"<b>{esc(kt['ma'])}</b>{sao} {so(kt['gia'], 2)} ({'+' if kt['thay_doi_pct'] > 0 else ''}"
-                f"{so(kt['thay_doi_pct'], 1)}%) · điểm {kt['diem']:+d} · xu hướng {kt['xu_huong']}")
-    out = [dau_dong]
-    if chi_tiet:
-        for ten, diem in kt["tin_hieu"]:
-            out.append(f"   {'↑' if diem > 0 else '↓' if diem < 0 else '·'} {esc(ten)}")
-        if cb and cb.get("ky_moi_nhat") and (cb["tot"] or cb["xau"]):
-            tom_tat = "; ".join(cb["tot"][:3] + cb["xau"][:2])
-            out.append(f"   📊 {esc(cb['ky_moi_nhat'])}: {esc(tom_tat)}")
-    return out
-
-
-def ban_tin_co_phieu(ky_thuat: list[dict], co_ban: dict[str, dict], bctc_moi: list[str],
-                     canh_bao_danh_muc: list[str], loi: list[str], cfg: dict, co_chay_bctc: bool) -> str:
-    kt_cfg = cfg["ky_thuat"]
-    tich_cuc = sorted([k for k in ky_thuat if k["diem"] >= kt_cfg["nguong_tich_cuc"]], key=lambda k: -k["diem"])
-    tieu_cuc = sorted([k for k in ky_thuat if k["diem"] <= kt_cfg["nguong_tieu_cuc"]], key=lambda k: k["diem"])
-    khac = [k for k in ky_thuat if k not in tich_cuc and k not in tieu_cuc and k["diem"] != 0]
-
-    ngay = ky_thuat[0]["ngay"] if ky_thuat else datetime.now(GIO_VN).date().isoformat()
+# ======================================================================
+def ban_tin_dong_tien(ngay: str, chi_so: list[dict], cp: list[dict], co_ban: dict[str, dict],
+                      bctc_moi: list[str], canh_bao_dm: list[str], loi: list[str], cfg: dict) -> str:
+    """Bản tin cuối ngày: khối lượng bất thường, khối ngoại, mua/bán chủ động, lệnh lớn."""
+    top = int((cfg.get("cap_nhat_15_phut") or {}).get("so_ma_top", 5))
     ngay_vn = datetime.fromisoformat(ngay).strftime("%d/%m/%Y")
-    tang = sum(1 for k in ky_thuat if k["thay_doi_pct"] > 0)
-    giam = sum(1 for k in ky_thuat if k["thay_doi_pct"] < 0)
-    xh_tang = sum(1 for k in ky_thuat if k["xu_huong"] == "tăng")
-    xh_giam = sum(1 for k in ky_thuat if k["xu_huong"] == "giảm")
+    tang = sum(1 for k in cp if k["thay_doi_pct"] > 0)
+    giam = sum(1 for k in cp if k["thay_doi_pct"] < 0)
+    dong = [f"<b>📊 {esc(cfg.get('nhom_co_phieu', 'VN30'))} — dòng tiền phiên {ngay_vn}</b>"]
+    for c in chi_so:
+        dong.append(f"<b>{esc(c['ten'])}</b> {so(c['diem'], 2)} {dau(c['pct'])}")
+    gt_tong = sum(k.get("gt") or 0 for k in cp)
+    dong += [f"Tăng {tang} · Giảm {giam} · Đứng {len(cp) - tang - giam} · GTGD nhóm {so(gt_tong, 0)} tỷ", ""]
 
-    dong = [f"<b>📊 {esc(cfg.get('nhom_co_phieu', 'VN30'))} — phiên {ngay_vn}</b>",
-            f"Tăng {tang} · Giảm {giam} · Đứng {len(ky_thuat) - tang - giam}  |  "
-            f"Xu hướng tăng {xh_tang} mã · giảm {xh_giam} mã", ""]
+    def pct(k):
+        return f"{'+' if k['thay_doi_pct'] > 0 else ''}{so(k['thay_doi_pct'], 1)}%"
 
-    if canh_bao_danh_muc:
-        dong.append("<b>💼 Danh mục của bạn</b>")
-        dong += [esc(c) for c in canh_bao_danh_muc]
-        dong.append("")
+    if canh_bao_dm:
+        dong += ["<b>💼 Danh mục của bạn</b>"] + [esc(c) for c in canh_bao_dm] + [""]
 
     if bctc_moi:
         dong.append("<b>🆕 Báo cáo tài chính mới</b>")
         for ma in bctc_moi:
             cb = co_ban.get(ma, {})
-            chi_tiet = []
+            ct = []
             if cb.get("doanh_thu_yoy") is not None:
-                chi_tiet.append(f"DT {'+' if cb['doanh_thu_yoy'] > 0 else ''}{so(cb['doanh_thu_yoy'], 0)}%")
+                ct.append(f"DT {'+' if cb['doanh_thu_yoy'] > 0 else ''}{so(cb['doanh_thu_yoy'], 0)}%")
             if cb.get("loi_nhuan_yoy") is not None:
-                chi_tiet.append(f"LNST {'+' if cb['loi_nhuan_yoy'] > 0 else ''}{so(cb['loi_nhuan_yoy'], 0)}%")
+                ct.append(f"LNST {'+' if cb['loi_nhuan_yoy'] > 0 else ''}{so(cb['loi_nhuan_yoy'], 0)}%")
             if cb.get("roe") is not None:
-                chi_tiet.append(f"ROE {so(cb['roe'], 1)}%")
-            danh_gia = "✅ đạt tiêu chí" if cb.get("dat_chuan") else ("⚠️ " + "; ".join(cb["xau"][:2]) if cb.get("xau") else "")
-            dong.append(f"• <b>{esc(ma)}</b> {esc(cb.get('ky_moi_nhat', ''))}: {esc(', '.join(chi_tiet))} (so cùng kỳ) {esc(danh_gia)}")
+                ct.append(f"ROE {so(cb['roe'], 1)}%")
+            dg = "✅ đạt tiêu chí" if cb.get("dat_chuan") else ("⚠️ " + "; ".join(cb["xau"][:2]) if cb.get("xau") else "")
+            dong.append(f"• <b>{esc(ma)}</b> {esc(cb.get('ky_moi_nhat', ''))}: {esc(', '.join(ct))} (so cùng kỳ) {esc(dg)}")
         dong.append("")
 
-    if tich_cuc:
-        dong.append("<b>🟢 Tín hiệu tích cực</b>")
-        for k in tich_cuc:
-            dong += _dong_co_phieu(k, co_ban.get(k["ma"]))
+    kl = sorted([k for k in cp if (k.get("ty_le_kl") or 0) >= 1.5], key=lambda k: -k["ty_le_kl"])[:10]
+    if kl:
+        dong.append("<b>🔊 Khối lượng bất thường</b> (so với TB 20 phiên)")
+        for k in kl:
+            dong.append(f"• <b>{esc(k['ma'])}</b> ×{so(k['ty_le_kl'], 1)} · {so(k.get('gt') or 0, 0)} tỷ · giá {pct(k)}")
         dong.append("")
-    if tieu_cuc:
-        dong.append("<b>🔴 Tín hiệu tiêu cực</b>")
-        for k in tieu_cuc:
-            dong += _dong_co_phieu(k, co_ban.get(k["ma"]))
-        dong.append("")
-    if khac:
-        dong.append("<b>⚪ Tín hiệu khác</b>")
-        for k in khac:
-            ds = ", ".join(t for t, _ in k["tin_hieu"])
-            dong.append(f"• <b>{esc(k['ma'])}</b> {so(k['gia'], 2)}: {esc(ds)}")
-        dong.append("")
-    if not (tich_cuc or tieu_cuc or khac):
-        dong += ["Hôm nay không có mã nào phát tín hiệu.", ""]
 
-    # Bảng xếp hạng cơ bản (chỉ khi có chạy BCTC)
-    if co_chay_bctc:
-        dat = [m for m, cb in co_ban.items() if cb.get("dat_chuan")]
-        if dat:
-            dong.append(f"<b>⭐ Đạt tiêu chí cơ bản</b> (LNST +≥{cfg['co_ban']['loi_nhuan_tang_yoy']}% cùng kỳ, "
-                        f"ROE ≥{cfg['co_ban']['roe_toi_thieu']}%): {esc(', '.join(sorted(dat)))}")
-            dong.append("")
+    nn = [k for k in cp if k.get("nn_rong") is not None]
+    if nn:
+        tong = sum(k["nn_rong"] for k in nn)
+        dong.append(f"<b>🌍 Khối ngoại {'mua' if tong >= 0 else 'bán'} ròng {so(abs(tong), 1)} tỷ</b>")
+        mua = sorted([k for k in nn if k["nn_rong"] > 0], key=lambda k: -k["nn_rong"])[:top]
+        ban = sorted([k for k in nn if k["nn_rong"] < 0], key=lambda k: k["nn_rong"])[:top]
+        if mua:
+            dong.append("Mua ròng: " + ", ".join(f"<b>{esc(k['ma'])}</b> {so(k['nn_rong'], 1)}" for k in mua))
+        if ban:
+            dong.append("Bán ròng: " + ", ".join(f"<b>{esc(k['ma'])}</b> {so(-k['nn_rong'], 1)}" for k in ban))
+        dong.append("")
 
+    cd = [k for k in cp if k.get("lenh") and k["lenh"]["mua"] + k["lenh"]["ban"] > 0]
+    if cd:
+        for k in cd:
+            k["_rong_cd"] = k["lenh"]["mua"] - k["lenh"]["ban"]
+        dong.append("<b>🐋 Mua/bán chủ động</b> (ròng, tỷ đồng)")
+        mua = sorted([k for k in cd if k["_rong_cd"] >= 1 and k["lenh"]["ti_le_mua"] >= 55],
+                     key=lambda k: -k["_rong_cd"])[:top]
+        ban = sorted([k for k in cd if k["_rong_cd"] <= -1 and k["lenh"]["ti_le_mua"] <= 45],
+                     key=lambda k: k["_rong_cd"])[:top]
+        if mua:
+            dong.append("Mua chủ động: " + ", ".join(
+                f"<b>{esc(k['ma'])}</b> +{so(k['_rong_cd'], 1)} ({so(k['lenh']['ti_le_mua'], 0)}%)" for k in mua))
+        if ban:
+            dong.append("Bán chủ động: " + ", ".join(
+                f"<b>{esc(k['ma'])}</b> {so(k['_rong_cd'], 1)} ({so(100 - k['lenh']['ti_le_mua'], 0)}%)" for k in ban))
+        lon = sorted([(k["ma"], l) for k in cd for l in k["lenh"]["lenh_lon"]], key=lambda x: -x[1]["gt"])[:top]
+        if lon:
+            from .dong_tien import mo_ta_lenh
+            dong.append("Lệnh lớn nhất: " + "; ".join(f"<b>{esc(ma)}</b> {esc(mo_ta_lenh(l))}" for ma, l in lon))
+        dong.append("")
+
+    xep = sorted(cp, key=lambda k: -k["thay_doi_pct"])
+    dong.append("▲ " + ", ".join(f"{k['ma']} {pct(k)}" for k in xep[:top] if k["thay_doi_pct"] > 0))
+    dong.append("▼ " + ", ".join(f"{k['ma']} {pct(k)}" for k in xep[::-1][:top] if k["thay_doi_pct"] < 0))
+    dong.append("")
+
+    dat = sorted(m for m, c in co_ban.items() if c.get("dat_chuan"))
+    if dat:
+        dong.append(f"<b>⭐ Đạt tiêu chí cơ bản</b> (LNST +≥{cfg['co_ban']['loi_nhuan_tang_yoy']}% cùng kỳ, "
+                    f"ROE ≥{cfg['co_ban']['roe_toi_thieu']}%): {esc(', '.join(dat))}")
+        dong.append("")
     if loi:
         dong.append(f"<i>Không lấy được dữ liệu: {esc(', '.join(loi))}</i>")
-    dong.append("<i>⭐ = vừa có tín hiệu kỹ thuật tốt vừa đạt tiêu chí cơ bản. "
-                "Giá theo nghìn đồng. Chỉ là công cụ hỗ trợ, không phải khuyến nghị đầu tư.</i>")
-    return "\n".join(dong).strip()
+    dong.append("<i>Giá theo nghìn đồng, giá trị theo tỷ đồng. Mua/bán chủ động tính theo chiều khớp lệnh. "
+                "Chỉ là công cụ hỗ trợ, không phải khuyến nghị đầu tư.</i>")
+    return "\n".join(d for d in dong if d.strip() not in ("▲", "▼")).strip()
