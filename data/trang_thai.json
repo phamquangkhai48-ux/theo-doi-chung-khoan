@@ -4,102 +4,102 @@
   "ANV": "2026Q3",
   "BAF": "2026Q2",
   "BCM": "2026Q3",
-  "BID": "2026Q2",
+  "BID": "2026Q3",
   "BMP": "2026Q3",
   "BSI": "2026Q3",
-  "BSR": "2026Q2",
-  "BVH": "2026Q2",
+  "BSR": "2026Q3",
+  "BVH": "2026Q3",
   "BWE": "2026Q3",
-  "CII": "2026Q2",
-  "CMG": "2026Q2",
+  "CII": "2026Q3",
+  "CMG": "2026Q3",
   "CTD": "2026Q2",
-  "CTG": "2026Q2",
+  "CTG": "2026Q3",
   "CTR": "2026Q3",
   "CTS": "2026Q3",
   "DBC": "2026Q3",
   "DCM": "2026Q3",
   "DGW": "2026Q3",
-  "DIG": "2026Q2",
+  "DIG": "2026Q3",
   "DPM": "2026Q3",
   "DSE": "2026Q3",
-  "DXG": "2026Q2",
-  "EIB": "2026Q2",
+  "DXG": "2026Q3",
+  "EIB": "2026Q3",
   "EVF": "2026Q3",
   "FPT": "2026Q3",
-  "FRT": "2026Q2",
+  "FRT": "2026Q3",
   "FTS": "2026Q3",
-  "GAS": "2026Q2",
+  "GAS": "2026Q3",
   "GEE": "2026Q3",
   "GEX": "2026Q3",
-  "GMD": "2026Q2",
-  "GVR": "2026Q2",
+  "GMD": "2026Q3",
+  "GVR": "2026Q3",
   "HAG": "2026Q2",
   "HCM": "2026Q3",
-  "HDB": "2026Q2",
+  "HDB": "2026Q3",
   "HDG": "2026Q2",
   "HHV": "2026Q2",
   "HPG": "2026Q3",
-  "HSG": "2026Q2",
+  "HSG": "2026Q3",
   "HT1": "2026Q3",
   "KBC": "2026Q3",
   "KDC": "2026Q2",
-  "KDH": "2026Q2",
+  "KDH": "2026Q3",
   "KOS": "2026Q2",
   "LPB": "2026Q3",
-  "MBB": "2026Q2",
+  "MBB": "2026Q3",
   "MCH": "2026Q3",
-  "MSB": "2026Q2",
+  "MSB": "2026Q3",
   "MSN": "2026Q3",
   "MWG": "2026Q3",
-  "NAB": "2026Q2",
+  "NAB": "2026Q3",
   "NKG": "2026Q3",
-  "NLG": "2026Q2",
+  "NLG": "2026Q3",
   "NT2": "2026Q3",
-  "NVL": "2026Q2",
+  "NVL": "2026Q3",
   "OCB": "2026Q3",
   "PAN": "2026Q3",
-  "PC1": "2026Q2",
-  "PDR": "2026Q2",
+  "PC1": "2026Q3",
+  "PDR": "2026Q3",
   "PHR": "2026Q2",
   "PLX": "2026Q2",
-  "PNJ": "2026Q2",
+  "PNJ": "2026Q3",
   "POW": "2026Q2",
-  "PVD": "2026Q2",
+  "PVD": "2026Q3",
   "PVT": "2026Q3",
   "REE": "2026Q3",
   "SAB": "2026Q3",
-  "SBT": "2026Q2",
-  "SHB": "2026Q2",
+  "SBT": "2026Q3",
+  "SHB": "2026Q3",
   "SIP": "2026Q2",
   "SJS": "2026Q3",
-  "SSB": "2026Q2",
-  "SSI": "2026Q2",
+  "SSB": "2026Q3",
+  "SSI": "2026Q3",
   "STB": "2026Q3",
   "TAL": "2026Q2",
   "TCB": "2026Q3",
-  "TCH": "2026Q2",
+  "TCH": "2026Q3",
   "TCX": "2026Q3",
-  "TPB": "2026Q2",
-  "VCB": "2026Q2",
+  "TPB": "2026Q3",
+  "VCB": "2026Q3",
   "VCG": "2026Q3",
   "VCI": "2026Q3",
   "VCK": "2026Q3",
   "VGC": "2026Q3",
-  "VHC": "2026Q2",
-  "VHM": "2026Q2",
+  "VHC": "2026Q3",
+  "VHM": "2026Q3",
   "VIB": "2026Q3",
-  "VIC": "2026Q2",
+  "VIC": "2026Q3",
   "VIX": "2026Q3",
   "VJC": "2026Q2",
   "VND": "2026Q3",
-  "VNM": "2026Q2",
+  "VNM": "2026Q3",
   "VPB": "2026Q3",
   "VPI": "2026Q2",
   "VPL": "2026Q3",
   "VPX": "2026Q3",
   "VRE": "2026Q3",
   "VSC": "2026Q2",
-  "VTP": "2026Q2"
+  "VTP": "2026Q3"
  },
  "co_ban": {
   "ACB": {
@@ -108,7 +108,7 @@
    "tot": [
     "Doanh thu +18% so với cùng kỳ",
     "ROE 16,2%",
-    "P/E 7,7"
+    "P/E 7,6"
    ],
    "xau": [],
    "dat_chuan": false,
@@ -120,7 +120,7 @@
    "loi_nhuan_4q_yoy": -7.414219006339695,
    "loi_nhuan_yoy_quy_truoc": -12.060270931555394,
    "roe": 16.23444487,
-   "pe": 7.6808652789,
+   "pe": 7.5726840778,
    "no_vcsh": 0.0
   },
   "ANV": {
@@ -128,7 +128,7 @@
    "ky_moi_nhat": "Q3/2026",
    "tot": [
     "ROE 20,8%",
-    "P/E 5,7"
+    "P/E 5,4"
    ],
    "xau": [
     "LNST -27% so với cùng kỳ"
@@ -142,7 +142,7 @@
    "loi_nhuan_4q_yoy": 4.674075491984575,
    "loi_nhuan_yoy_quy_truoc": -59.47573421973683,
    "roe": 20.79032544,
-   "pe": 5.707014936,
+   "pe": 5.4030910637,
    "no_vcsh": 0.4923798364
   },
   "BAF": {
@@ -170,11 +170,11 @@
    "ma": "BCM",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +36% so với cùng kỳ"
+    "LNST +36% so với cùng kỳ",
+    "P/E 19,0"
    ],
    "xau": [
-    "ROE 8,9%",
-    "P/E cao 20,2"
+    "ROE 9,4%"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -184,27 +184,28 @@
    "loi_nhuan": 563317279679.0,
    "loi_nhuan_4q_yoy": -43.409356335864636,
    "loi_nhuan_yoy_quy_truoc": -99.14922864405587,
-   "roe": 8.85215783,
-   "pe": 20.1504745921,
-   "no_vcsh": 1.1707558065
+   "roe": 9.42644342,
+   "pe": 18.9771102093,
+   "no_vcsh": 1.1410395863
   },
   "BID": {
    "ma": "BID",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +21% so với cùng kỳ",
+    "LNST +40% so với cùng kỳ",
+    "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 17,7%",
     "P/E 7,8"
    ],
    "xau": [],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": 7.0079466454074035,
-   "loi_nhuan_yoy": 20.59592589253503,
-   "loi_nhuan": 8146256000000.0,
-   "loi_nhuan_4q_yoy": 26.212861707422075,
-   "loi_nhuan_yoy_quy_truoc": 16.445199647351295,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 9.700710256690126,
+   "loi_nhuan_yoy": 39.941262873419014,
+   "loi_nhuan": 8330653000000.0,
+   "loi_nhuan_4q_yoy": 31.394912941596907,
+   "loi_nhuan_yoy_quy_truoc": 20.59592589253503,
    "roe": 17.65163382,
    "pe": 7.7885519643,
    "no_vcsh": 0.0
@@ -214,7 +215,7 @@
    "ky_moi_nhat": "Q3/2026",
    "tot": [
     "ROE 41,4%",
-    "P/E 8,9"
+    "P/E 9,0"
    ],
    "xau": [],
    "dat_chuan": false,
@@ -226,14 +227,14 @@
    "loi_nhuan_4q_yoy": 4.462717430723195,
    "loi_nhuan_yoy_quy_truoc": 11.303043519680456,
    "roe": 41.443861240000004,
-   "pe": 8.9261747756,
+   "pe": 8.9915679974,
    "no_vcsh": 0.0173115041
   },
   "BSI": {
    "ma": "BSI",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 15,6"
+    "P/E 15,2"
    ],
    "xau": [
     "LNST -23% so với cùng kỳ",
@@ -249,14 +250,14 @@
    "loi_nhuan_4q_yoy": -3.5994805717756595,
    "loi_nhuan_yoy_quy_truoc": 20.918484056340958,
    "roe": 8.32115677,
-   "pe": 15.6066242408,
+   "pe": 15.2064543884,
    "no_vcsh": 2.0649715483
   },
   "BSR": {
    "ma": "BSR",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +807% so với cùng kỳ",
+    "LNST +888% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 30,5%",
     "P/E 7,6"
@@ -264,21 +265,20 @@
    "xau": [],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 806.5164081535404,
-   "loi_nhuan": 7666084165613.0,
-   "loi_nhuan_4q_yoy": 40000.80446778064,
-   "loi_nhuan_yoy_quy_truoc": 1972.8154174810882,
+   "loi_nhuan_yoy": 888.1618499338274,
+   "loi_nhuan": 8968019577437.0,
+   "loi_nhuan_4q_yoy": 1252.1601817407393,
+   "loi_nhuan_yoy_quy_truoc": 806.5164081535404,
    "roe": 30.476962559999997,
    "pe": 7.5738451658,
    "no_vcsh": 0.1712129682
   },
   "BVH": {
    "ma": "BVH",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +55% so với cùng kỳ",
     "P/E 17,0"
    ],
    "xau": [
@@ -286,12 +286,12 @@
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 55.350517130533625,
-   "loi_nhuan": 1032377110242.0,
-   "loi_nhuan_4q_yoy": 36.42695305603514,
-   "loi_nhuan_yoy_quy_truoc": 18.94507102293772,
+   "loi_nhuan_yoy": 8.557477557605853,
+   "loi_nhuan": 824311165523.0,
+   "loi_nhuan_4q_yoy": 27.384367373126196,
+   "loi_nhuan_yoy_quy_truoc": 55.350517130533625,
    "roe": 13.29504039,
    "pe": 16.9944515417,
    "no_vcsh": 0.1347382714
@@ -314,49 +314,48 @@
    "loi_nhuan_4q_yoy": 43.674291309889334,
    "loi_nhuan_yoy_quy_truoc": 9.969187345982489,
    "roe": 19.00617587,
-   "pe": 7.6855101482,
+   "pe": 7.676542225,
    "no_vcsh": 0.9204989382
   },
   "CII": {
    "ma": "CII",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [],
    "xau": [
-    "LNST -59% so với cùng kỳ",
-    "ROE 1,2%",
-    "P/E cao 71,6",
-    "Nợ/VCSH 1,89 lần"
+    "LNST -40% so với cùng kỳ",
+    "ROE 1,1%",
+    "P/E cao 82,2",
+    "Nợ/VCSH 1,93 lần"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -59.30516954199072,
-   "loi_nhuan": 11694540775.0,
-   "loi_nhuan_4q_yoy": 167.7033709578608,
-   "loi_nhuan_yoy_quy_truoc": 16.058490502006894,
-   "roe": 1.19086651,
-   "pe": 71.5904585959,
-   "no_vcsh": 1.8937566662
+   "loi_nhuan_yoy": -40.1961629761823,
+   "loi_nhuan": 6614207925.0,
+   "loi_nhuan_4q_yoy": 128.44975959741754,
+   "loi_nhuan_yoy_quy_truoc": -59.30516954199072,
+   "roe": 1.11923623,
+   "pe": 82.207237433,
+   "no_vcsh": 1.931956034
   },
   "CMG": {
    "ma": "CMG",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
     "P/E 11,3"
    ],
    "xau": [
-    "LNST -20% so với cùng kỳ",
     "ROE 12,3%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -20.261960841897984,
-   "loi_nhuan": 75074096396.0,
-   "loi_nhuan_4q_yoy": 9.555832618350468,
-   "loi_nhuan_yoy_quy_truoc": 17.98806184748669,
+   "loi_nhuan_yoy": -1.1664468108179227,
+   "loi_nhuan": 88944711766.0,
+   "loi_nhuan_4q_yoy": 0.5604613352671928,
+   "loi_nhuan_yoy_quy_truoc": -20.261960841897984,
    "roe": 12.272188320000001,
    "pe": 11.3201509235,
    "no_vcsh": 0.9110039381
@@ -385,10 +384,10 @@
   },
   "CTG": {
    "ma": "CTG",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "Doanh thu +26% so với cùng kỳ",
-    "LNST +21% so với cùng kỳ",
+    "Doanh thu +27% so với cùng kỳ",
+    "LNST +28% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 21,8%",
     "P/E 5,7"
@@ -396,12 +395,12 @@
    "xau": [],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": 26.13897350873067,
-   "loi_nhuan_yoy": 21.408475902247037,
-   "loi_nhuan": 11740060000000.0,
-   "loi_nhuan_4q_yoy": 33.40727735350366,
-   "loi_nhuan_yoy_quy_truoc": 64.55406334340614,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 27.353106773125944,
+   "loi_nhuan_yoy": 28.2410462854773,
+   "loi_nhuan": 10834809000000.0,
+   "loi_nhuan_4q_yoy": 27.666926797456014,
+   "loi_nhuan_yoy_quy_truoc": 21.408475902247037,
    "roe": 21.76080705,
    "pe": 5.7131551978,
    "no_vcsh": 0.0
@@ -411,7 +410,7 @@
    "ky_moi_nhat": "Q3/2026",
    "tot": [
     "ROE 30,5%",
-    "P/E 13,0"
+    "P/E 12,9"
    ],
    "xau": [],
    "dat_chuan": false,
@@ -423,7 +422,7 @@
    "loi_nhuan_4q_yoy": 14.06169236047543,
    "loi_nhuan_yoy_quy_truoc": 18.38637232915483,
    "roe": 30.48877702,
-   "pe": 13.0202553015,
+   "pe": 12.9053706959,
    "no_vcsh": 1.1747618877
   },
   "CTS": {
@@ -433,7 +432,7 @@
    "xau": [
     "LNST -98% so với cùng kỳ",
     "ROE 3,9%",
-    "P/E cao 52,7",
+    "P/E cao 51,3",
     "Nợ/VCSH 2,69 lần"
    ],
    "dat_chuan": false,
@@ -445,14 +444,14 @@
    "loi_nhuan_4q_yoy": -81.74978608144124,
    "loi_nhuan_yoy_quy_truoc": -91.21624636129259,
    "roe": 3.8791459799999997,
-   "pe": 52.6654528122,
+   "pe": 51.3213229261,
    "no_vcsh": 2.6859921939
   },
   "DBC": {
    "ma": "DBC",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 6,7"
+    "P/E 6,6"
    ],
    "xau": [
     "LNST -42% so với cùng kỳ",
@@ -467,7 +466,7 @@
    "loi_nhuan_4q_yoy": -36.63925017154931,
    "loi_nhuan_yoy_quy_truoc": -42.97115752004845,
    "roe": 11.99276229,
-   "pe": 6.7303908816,
+   "pe": 6.560001239,
    "no_vcsh": 0.8739714823
   },
   "DCM": {
@@ -476,8 +475,8 @@
    "tot": [
     "LNST +31% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
-    "ROE 23,6%",
-    "P/E 6,9"
+    "ROE 23,8%",
+    "P/E 6,5"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -488,9 +487,9 @@
    "loi_nhuan": 429607637443.0,
    "loi_nhuan_4q_yoy": 43.431747552618674,
    "loi_nhuan_yoy_quy_truoc": 35.43492089377649,
-   "roe": 23.63630631,
-   "pe": 6.9041067065,
-   "no_vcsh": 0.3122943364
+   "roe": 23.841271380000002,
+   "pe": 6.4891928039,
+   "no_vcsh": 0.2277887773
   },
   "DGW": {
    "ma": "DGW",
@@ -499,7 +498,7 @@
     "LNST +66% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 26,7%",
-    "P/E 10,0"
+    "P/E 9,6"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -511,28 +510,27 @@
    "loi_nhuan_4q_yoy": 78.83393659528043,
    "loi_nhuan_yoy_quy_truoc": 167.3452856054496,
    "roe": 26.744218800000002,
-   "pe": 9.9545190058,
+   "pe": 9.5914718421,
    "no_vcsh": 1.1421609248
   },
   "DIG": {
    "ma": "DIG",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +110% so với cùng kỳ",
-    "LNST tăng mạnh 2 quý liên tiếp",
     "P/E 9,6"
    ],
    "xau": [
+    "LNST -64% so với cùng kỳ",
     "ROE 8,0%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 109.69275093328483,
-   "loi_nhuan": 139911884271.0,
-   "loi_nhuan_4q_yoy": 460.78512224118793,
-   "loi_nhuan_yoy_quy_truoc": 81.37714852116909,
+   "loi_nhuan_yoy": -63.58707771067338,
+   "loi_nhuan": 76996684843.0,
+   "loi_nhuan_4q_yoy": 85.33326497237364,
+   "loi_nhuan_yoy_quy_truoc": 109.69275093328483,
    "roe": 8.04976213,
    "pe": 9.6214035557,
    "no_vcsh": 0.1299416841
@@ -541,11 +539,11 @@
    "ma": "DPM",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "ROE 15,6%",
-    "P/E 8,2"
+    "P/E 8,8"
    ],
    "xau": [
-    "LNST -83% so với cùng kỳ"
+    "LNST -83% so với cùng kỳ",
+    "ROE 13,8%"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -555,9 +553,9 @@
    "loi_nhuan": 40385715168.0,
    "loi_nhuan_4q_yoy": 91.34455267094832,
    "loi_nhuan_yoy_quy_truoc": 124.849860079792,
-   "roe": 15.59598273,
-   "pe": 8.1868551685,
-   "no_vcsh": 0.2802047739
+   "roe": 13.81809097,
+   "pe": 8.7947567152,
+   "no_vcsh": 0.3168957414
   },
   "DSE": {
    "ma": "DSE",
@@ -566,7 +564,7 @@
    "xau": [
     "LNST -69% so với cùng kỳ",
     "ROE 2,8%",
-    "P/E cao 54,9",
+    "P/E cao 54,8",
     "Nợ/VCSH 1,60 lần"
    ],
    "dat_chuan": false,
@@ -578,47 +576,47 @@
    "loi_nhuan_4q_yoy": -51.05267597604115,
    "loi_nhuan_yoy_quy_truoc": 11.515191301775097,
    "roe": 2.8187591800000003,
-   "pe": 54.9106876795,
+   "pe": 54.7723736047,
    "no_vcsh": 1.5986934976
   },
   "DXG": {
    "ma": "DXG",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [],
    "xau": [
-    "LNST -35% so với cùng kỳ",
-    "ROE 1,4%",
-    "P/E cao 63,8"
+    "LNST -84% so với cùng kỳ",
+    "ROE 0,8%",
+    "P/E cao 110,2"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -34.77361923405078,
-   "loi_nhuan": 53076816284.0,
-   "loi_nhuan_4q_yoy": -40.22443516715421,
-   "loi_nhuan_yoy_quy_truoc": -21.567209312041904,
-   "roe": 1.3901165,
-   "pe": 63.8340327834,
-   "no_vcsh": 0.2447176052
+   "loi_nhuan_yoy": -83.57870996469487,
+   "loi_nhuan": 15244709865.0,
+   "loi_nhuan_4q_yoy": -70.1329031528506,
+   "loi_nhuan_yoy_quy_truoc": -34.77361923405078,
+   "roe": 0.8021913300000001,
+   "pe": 110.2145278776,
+   "no_vcsh": 0.2640574885
   },
   "EIB": {
    "ma": "EIB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [],
    "xau": [
-    "LNST -51% so với cùng kỳ",
+    "LNST -68% so với cùng kỳ",
     "ROE 1,9%",
     "P/E cao 61,7"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": -7.494383352271372,
-   "loi_nhuan_yoy": -50.519709863228,
-   "loi_nhuan": 250491000000.0,
-   "loi_nhuan_4q_yoy": -85.19148877236675,
-   "loi_nhuan_yoy_quy_truoc": -59.12460192956905,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": -19.694683695394122,
+   "loi_nhuan_yoy": -67.61729572194437,
+   "loi_nhuan": 144002000000.0,
+   "loi_nhuan_4q_yoy": -93.72165160061414,
+   "loi_nhuan_yoy_quy_truoc": -50.519709863228,
    "roe": 1.86539556,
    "pe": 61.7300267761,
    "no_vcsh": 0.0
@@ -641,7 +639,7 @@
    "loi_nhuan_4q_yoy": 14.557073687099376,
    "loi_nhuan_yoy_quy_truoc": 19.694226763217927,
    "roe": 9.66225725,
-   "pe": 8.9571728992,
+   "pe": 9.0337299326,
    "no_vcsh": 0.0
   },
   "FPT": {
@@ -666,33 +664,33 @@
   },
   "FRT": {
    "ma": "FRT",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +188% so với cùng kỳ",
+    "LNST +101% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
-    "ROE 27,5%"
+    "ROE 29,1%",
+    "P/E 19,6"
    ],
    "xau": [
-    "P/E cao 22,1",
-    "Nợ/VCSH 2,19 lần"
+    "Nợ/VCSH 2,18 lần"
    ],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 187.79359079485775,
-   "loi_nhuan": 341489101474.0,
-   "loi_nhuan_4q_yoy": 111.10711291134021,
-   "loi_nhuan_yoy_quy_truoc": 71.08070650023186,
-   "roe": 27.53877816,
-   "pe": 22.1103831805,
-   "no_vcsh": 2.192180225
+   "loi_nhuan_yoy": 101.30667103618221,
+   "loi_nhuan": 440325000202.0,
+   "loi_nhuan_4q_yoy": 120.40268234884905,
+   "loi_nhuan_yoy_quy_truoc": 187.79359079485775,
+   "roe": 29.106613279999998,
+   "pe": 19.5703591559,
+   "no_vcsh": 2.1811348523
   },
   "FTS": {
    "ma": "FTS",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 17,9"
+    "P/E 17,0"
    ],
    "xau": [
     "LNST -35% so với cùng kỳ",
@@ -708,26 +706,27 @@
    "loi_nhuan_4q_yoy": -6.156270975432598,
    "loi_nhuan_yoy_quy_truoc": 28.755580388417947,
    "roe": 9.00402607,
-   "pe": 17.8786747157,
+   "pe": 16.9776274489,
    "no_vcsh": 2.0141976932
   },
   "GAS": {
    "ma": "GAS",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +23% so với cùng kỳ",
+    "LNST +80% so với cùng kỳ",
+    "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 18,9%",
     "P/E 15,4"
    ],
    "xau": [],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 23.4326858070099,
-   "loi_nhuan": 5860096460005.0,
-   "loi_nhuan_4q_yoy": 5.342737411473952,
-   "loi_nhuan_yoy_quy_truoc": 6.822774091146533,
+   "loi_nhuan_yoy": 79.53114644647941,
+   "loi_nhuan": 4576462445604.0,
+   "loi_nhuan_4q_yoy": 21.863363243171552,
+   "loi_nhuan_yoy_quy_truoc": 23.4326858070099,
    "roe": 18.89135482,
    "pe": 15.3506168014,
    "no_vcsh": 0.0416835827
@@ -737,7 +736,7 @@
    "ky_moi_nhat": "Q3/2026",
    "tot": [
     "ROE 32,2%",
-    "P/E 16,5"
+    "P/E 16,4"
    ],
    "xau": [
     "LNST -56% so với cùng kỳ"
@@ -751,7 +750,7 @@
    "loi_nhuan_4q_yoy": -21.553311883625483,
    "loi_nhuan_yoy_quy_truoc": 34.40503979263008,
    "roe": 32.19110383,
-   "pe": 16.524165206,
+   "pe": 16.351524674,
    "no_vcsh": 0.7962236774
   },
   "GEX": {
@@ -761,7 +760,7 @@
    "xau": [
     "LNST -60% so với cùng kỳ",
     "ROE 5,2%",
-    "P/E cao 30,2"
+    "P/E cao 29,1"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -772,14 +771,14 @@
    "loi_nhuan_4q_yoy": -52.23138498334874,
    "loi_nhuan_yoy_quy_truoc": -17.78703620384261,
    "roe": 5.18206181,
-   "pe": 30.1872209076,
+   "pe": 29.1372306151,
    "no_vcsh": 0.9538643158
   },
   "GMD": {
    "ma": "GMD",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +152% so với cùng kỳ",
+    "LNST +41% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 19,3%",
     "P/E 13,3"
@@ -787,21 +786,21 @@
    "xau": [],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 152.4695185893045,
-   "loi_nhuan": 1124150332627.0,
-   "loi_nhuan_4q_yoy": 81.46306983318298,
-   "loi_nhuan_yoy_quy_truoc": 32.574910436433946,
+   "loi_nhuan_yoy": 40.82939033075454,
+   "loi_nhuan": 443906238278.0,
+   "loi_nhuan_4q_yoy": 93.27695839010887,
+   "loi_nhuan_yoy_quy_truoc": 152.4695185893045,
    "roe": 19.34110955,
    "pe": 13.2744970913,
    "no_vcsh": 0.1617908836
   },
   "GVR": {
    "ma": "GVR",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +50% so với cùng kỳ",
+    "LNST +76% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "P/E 17,9"
    ],
@@ -810,12 +809,12 @@
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 49.51199452418369,
-   "loi_nhuan": 2163156126413.0,
-   "loi_nhuan_4q_yoy": 31.59036076223707,
-   "loi_nhuan_yoy_quy_truoc": 89.99328695593061,
+   "loi_nhuan_yoy": 75.82741980471286,
+   "loi_nhuan": 3335908976179.0,
+   "loi_nhuan_4q_yoy": 34.52093295594369,
+   "loi_nhuan_yoy_quy_truoc": 49.51199452418369,
    "roe": 11.98390088,
    "pe": 17.9285874315,
    "no_vcsh": 0.0389068083
@@ -849,7 +848,7 @@
    "xau": [
     "LNST -33% so với cùng kỳ",
     "ROE 8,1%",
-    "P/E cao 21,5"
+    "P/E cao 21,7"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -860,26 +859,26 @@
    "loi_nhuan_4q_yoy": 8.597678240043717,
    "loi_nhuan_yoy_quy_truoc": 42.0053680454094,
    "roe": 8.1260479,
-   "pe": 21.5120892342,
+   "pe": 21.6678079411,
    "no_vcsh": 1.5481060738
   },
   "HDB": {
    "ma": "HDB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +58% so với cùng kỳ",
+    "Doanh thu +20% so với cùng kỳ",
     "ROE 23,9%",
     "P/E 7,8"
    ],
    "xau": [],
-   "dat_chuan": true,
+   "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": 9.278046443730513,
-   "loi_nhuan_yoy": 58.05397654529625,
-   "loi_nhuan": 5555376000000.0,
-   "loi_nhuan_4q_yoy": 33.65705704629593,
-   "loi_nhuan_yoy_quy_truoc": 12.560068424281546,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 19.56357401821387,
+   "loi_nhuan_yoy": 5.625674936749969,
+   "loi_nhuan": 3851786000000.0,
+   "loi_nhuan_4q_yoy": 33.018980658778865,
+   "loi_nhuan_yoy_quy_truoc": 58.05397654529625,
    "roe": 23.86333852,
    "pe": 7.7812278581,
    "no_vcsh": 0.0
@@ -933,8 +932,8 @@
    "tot": [
     "LNST +106% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
-    "ROE 17,4%",
-    "P/E 7,6"
+    "ROE 19,7%",
+    "P/E 6,5"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -945,28 +944,28 @@
    "loi_nhuan": 8217339610974.0,
    "loi_nhuan_4q_yoy": 90.63029049879646,
    "loi_nhuan_yoy_quy_truoc": 49.677860818068396,
-   "roe": 17.3841801,
-   "pe": 7.5638735537,
-   "no_vcsh": 0.6962460681
+   "roe": 19.689785479999998,
+   "pe": 6.4599350402,
+   "no_vcsh": 0.7069460844
   },
   "HSG": {
    "ma": "HSG",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +40% so với cùng kỳ",
     "P/E 12,9"
    ],
    "xau": [
+    "LNST -37% so với cùng kỳ",
     "ROE 5,7%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 39.58412468292474,
-   "loi_nhuan": 382146990376.0,
-   "loi_nhuan_4q_yoy": 40.98790807428918,
-   "loi_nhuan_yoy_quy_truoc": -40.477917668985974,
+   "loi_nhuan_yoy": -37.43242593453072,
+   "loi_nhuan": 55186298568.0,
+   "loi_nhuan_4q_yoy": -15.20598809966015,
+   "loi_nhuan_yoy_quy_truoc": 39.58412468292474,
    "roe": 5.707042830000001,
    "pe": 12.9158426192,
    "no_vcsh": 0.6108320649
@@ -975,7 +974,7 @@
    "ma": "HT1",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 12,7"
+    "P/E 12,3"
    ],
    "xau": [
     "ROE 7,8%"
@@ -989,7 +988,7 @@
    "loi_nhuan_4q_yoy": 95.04629952353541,
    "loi_nhuan_yoy_quy_truoc": 23.05186243037962,
    "roe": 7.81203801,
-   "pe": 12.6766024775,
+   "pe": 12.2953512752,
    "no_vcsh": 0.0064089596
   },
   "KBC": {
@@ -997,7 +996,7 @@
    "ky_moi_nhat": "Q3/2026",
    "tot": [
     "LNST +197% so với cùng kỳ",
-    "P/E 14,3"
+    "P/E 14,0"
    ],
    "xau": [
     "ROE 6,9%"
@@ -1011,7 +1010,7 @@
    "loi_nhuan_4q_yoy": 14.773169542280318,
    "loi_nhuan_yoy_quy_truoc": -98.23064320464188,
    "roe": 6.94886724,
-   "pe": 14.2530506755,
+   "pe": 13.9841251911,
    "no_vcsh": 1.2113239105
   },
   "KDC": {
@@ -1037,23 +1036,22 @@
   },
   "KDH": {
    "ma": "KDH",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +278% so với cùng kỳ",
-    "LNST tăng mạnh 2 quý liên tiếp",
     "P/E 9,5"
    ],
    "xau": [
+    "LNST -25% so với cùng kỳ",
     "ROE 9,5%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 277.63371482883576,
-   "loi_nhuan": 751622037000.0,
-   "loi_nhuan_4q_yoy": 122.60819195408507,
-   "loi_nhuan_yoy_quy_truoc": 130.7474159934908,
+   "loi_nhuan_yoy": -25.499349345617116,
+   "loi_nhuan": 175646424000.0,
+   "loi_nhuan_4q_yoy": 77.75258956501037,
+   "loi_nhuan_yoy_quy_truoc": 277.63371482883576,
    "roe": 9.503950510000001,
    "pe": 9.4773414777,
    "no_vcsh": 0.8339688093
@@ -1087,7 +1085,7 @@
     "Doanh thu +50% so với cùng kỳ",
     "LNST +29% so với cùng kỳ",
     "ROE 26,0%",
-    "P/E 9,2"
+    "P/E 8,9"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1099,27 +1097,28 @@
    "loi_nhuan_4q_yoy": 16.699909579662698,
    "loi_nhuan_yoy_quy_truoc": 5.208585938057597,
    "roe": 25.96425726,
-   "pe": 9.214832231,
+   "pe": 8.9183765024,
    "no_vcsh": 0.0
   },
   "MBB": {
    "ma": "MBB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "Doanh thu +18% so với cùng kỳ",
-    "LNST +40% so với cùng kỳ",
+    "Doanh thu +35% so với cùng kỳ",
+    "LNST +44% so với cùng kỳ",
+    "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 20,7%",
     "P/E 6,0"
    ],
    "xau": [],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": 18.489478929155467,
-   "loi_nhuan_yoy": 40.00706069904323,
-   "loi_nhuan": 8229062000000.0,
-   "loi_nhuan_4q_yoy": 22.669625653378887,
-   "loi_nhuan_yoy_quy_truoc": 14.430732641669742,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 35.23021609579568,
+   "loi_nhuan_yoy": 44.30914316649866,
+   "loi_nhuan": 8039497000000.0,
+   "loi_nhuan_4q_yoy": 33.93391574329492,
+   "loi_nhuan_yoy_quy_truoc": 40.00706069904323,
    "roe": 20.68574322,
    "pe": 5.9894967136,
    "no_vcsh": 0.0
@@ -1131,7 +1130,7 @@
     "ROE 40,3%"
    ],
    "xau": [
-    "P/E cao 24,5"
+    "P/E cao 24,1"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -1142,13 +1141,15 @@
    "loi_nhuan_4q_yoy": 4.914004824049001,
    "loi_nhuan_yoy_quy_truoc": 10.977358216675404,
    "roe": 40.29313575,
-   "pe": 24.4935100934,
+   "pe": 24.0832036606,
    "no_vcsh": 0.511388931
   },
   "MSB": {
    "ma": "MSB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
+    "Doanh thu +17% so với cùng kỳ",
+    "LNST +29% so với cùng kỳ",
     "P/E 9,3"
    ],
    "xau": [
@@ -1156,12 +1157,12 @@
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": -3.9683035814045198,
-   "loi_nhuan_yoy": 1.0594815966487037,
-   "loi_nhuan": 1250603000000.0,
-   "loi_nhuan_4q_yoy": 15.527756856838003,
-   "loi_nhuan_yoy_quy_truoc": 19.644500913004958,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 17.083319132833232,
+   "loi_nhuan_yoy": 29.43239618233202,
+   "loi_nhuan": 1649203000000.0,
+   "loi_nhuan_4q_yoy": 16.147267924178532,
+   "loi_nhuan_yoy_quy_truoc": 1.0594815966487037,
    "roe": 13.680226979999999,
    "pe": 9.3119275712,
    "no_vcsh": 0.0
@@ -1173,7 +1174,7 @@
     "LNST +204% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 24,5%",
-    "P/E 11,5"
+    "P/E 11,2"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1185,7 +1186,7 @@
    "loi_nhuan_4q_yoy": 186.155538488279,
    "loi_nhuan_yoy_quy_truoc": 202.77002728174605,
    "roe": 24.45397406,
-   "pe": 11.5478605428,
+   "pe": 11.2115150901,
    "no_vcsh": 1.2988127525
   },
   "MWG": {
@@ -1195,7 +1196,7 @@
     "LNST +75% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 29,7%",
-    "P/E 10,0"
+    "P/E 9,8"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1207,25 +1208,27 @@
    "loi_nhuan_4q_yoy": 92.36094560920382,
    "loi_nhuan_yoy_quy_truoc": 100.37948577782512,
    "roe": 29.653604119999997,
-   "pe": 10.0313737782,
+   "pe": 9.793161736,
    "no_vcsh": 0.5300860314
   },
   "NAB": {
    "ma": "NAB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
+    "Doanh thu +16% so với cùng kỳ",
+    "LNST +23% so với cùng kỳ",
     "ROE 19,5%",
     "P/E 5,4"
    ],
    "xau": [],
-   "dat_chuan": false,
+   "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": 4.58397351447557,
-   "loi_nhuan_yoy": 16.928472915545136,
-   "loi_nhuan": 1209825000000.0,
-   "loi_nhuan_4q_yoy": 21.938199006019808,
-   "loi_nhuan_yoy_quy_truoc": 34.29393926976192,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 16.11281711079804,
+   "loi_nhuan_yoy": 23.03699035245068,
+   "loi_nhuan": 1268942000000.0,
+   "loi_nhuan_4q_yoy": 22.96863030636831,
+   "loi_nhuan_yoy_quy_truoc": 16.928472915545136,
    "roe": 19.49572196,
    "pe": 5.3622181184,
    "no_vcsh": 0.0
@@ -1238,7 +1241,7 @@
    ],
    "xau": [
     "ROE 3,2%",
-    "P/E cao 24,5"
+    "P/E cao 24,1"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -1249,27 +1252,27 @@
    "loi_nhuan_4q_yoy": 8.138079087419792,
    "loi_nhuan_yoy_quy_truoc": 13.6817605721971,
    "roe": 3.1728918100000003,
-   "pe": 24.489421348,
+   "pe": 24.084637524,
    "no_vcsh": 1.1100709886
   },
   "NLG": {
    "ma": "NLG",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
     "P/E 15,1"
    ],
    "xau": [
-    "LNST -44% so với cùng kỳ",
+    "LNST -97% so với cùng kỳ",
     "ROE 5,2%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -44.421299298733445,
-   "loi_nhuan": 55206070972.0,
-   "loi_nhuan_4q_yoy": -6.174659529528659,
-   "loi_nhuan_yoy_quy_truoc": -37.03795186725258,
+   "loi_nhuan_yoy": -96.71246494124004,
+   "loi_nhuan": 4798582648.0,
+   "loi_nhuan_4q_yoy": -44.40248014396939,
+   "loi_nhuan_yoy_quy_truoc": -44.421299298733445,
    "roe": 5.1742428799999995,
    "pe": 15.0549572081,
    "no_vcsh": 0.3572310108
@@ -1280,7 +1283,7 @@
    "tot": [
     "LNST +95% so với cùng kỳ",
     "ROE 28,7%",
-    "P/E 4,5"
+    "P/E 4,4"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1292,14 +1295,14 @@
    "loi_nhuan_4q_yoy": 123.80040522681806,
    "loi_nhuan_yoy_quy_truoc": -5.66525508363106,
    "roe": 28.72023324,
-   "pe": 4.5178034631,
+   "pe": 4.4388898655,
    "no_vcsh": 0.3312398367
   },
   "NVL": {
    "ma": "NVL",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +703% so với cùng kỳ",
+    "LNST +227% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "P/E 5,9"
    ],
@@ -1308,12 +1311,12 @@
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 703.3961503013751,
-   "loi_nhuan": 968882092212.0,
-   "loi_nhuan_4q_yoy": 2447.055143488211,
-   "loi_nhuan_yoy_quy_truoc": 303.2648987141096,
+   "loi_nhuan_yoy": 227.38669238121406,
+   "loi_nhuan": 1118731451578.0,
+   "loi_nhuan_4q_yoy": 262.15804524126287,
+   "loi_nhuan_yoy_quy_truoc": 703.3961503013751,
    "roe": 9.4567681,
    "pe": 5.8901467543,
    "no_vcsh": 1.1176166091
@@ -1322,7 +1325,7 @@
    "ma": "OCB",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 7,2"
+    "P/E 7,1"
    ],
    "xau": [
     "ROE 12,8%"
@@ -1336,7 +1339,7 @@
    "loi_nhuan_4q_yoy": 16.70683796044685,
    "loi_nhuan_yoy_quy_truoc": 22.70105113569878,
    "roe": 12.80617171,
-   "pe": 7.2293138155,
+   "pe": 7.1284396693,
    "no_vcsh": 0.0
   },
   "PAN": {
@@ -1346,7 +1349,7 @@
     "LNST +25% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 22,3%",
-    "P/E 3,6"
+    "P/E 3,5"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1358,48 +1361,47 @@
    "loi_nhuan_4q_yoy": 90.10910615331333,
    "loi_nhuan_yoy_quy_truoc": 30.99125395808471,
    "roe": 22.27332306,
-   "pe": 3.5582130357,
+   "pe": 3.4565498061,
    "no_vcsh": 0.4634388891
   },
   "PC1": {
    "ma": "PC1",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "ROE 17,9%",
-    "P/E 6,5"
+    "ROE 16,6%",
+    "P/E 6,8"
    ],
    "xau": [],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -8.250048348559291,
-   "loi_nhuan": 130181746685.0,
-   "loi_nhuan_4q_yoy": 171.71949109692926,
-   "loi_nhuan_yoy_quy_truoc": 227.5371800211289,
-   "roe": 17.8770643,
-   "pe": 6.4961137536,
-   "no_vcsh": 1.33849728
+   "loi_nhuan_yoy": -14.323753866201494,
+   "loi_nhuan": 257774257304.0,
+   "loi_nhuan_4q_yoy": 96.3498593558224,
+   "loi_nhuan_yoy_quy_truoc": -8.250048348559291,
+   "roe": 16.591758600000002,
+   "pe": 6.8402271965,
+   "no_vcsh": 1.1404729206
   },
   "PDR": {
    "ma": "PDR",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +24% so với cùng kỳ",
-    "LNST tăng mạnh 2 quý liên tiếp",
     "P/E 17,9"
    ],
    "xau": [
+    "LNST -88% so với cùng kỳ",
     "ROE 5,0%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 24.114821995818623,
-   "loi_nhuan": 80578906614.0,
-   "loi_nhuan_4q_yoy": 263.9469717885903,
-   "loi_nhuan_yoy_quy_truoc": 161.57383740323635,
+   "loi_nhuan_yoy": -88.12631967215603,
+   "loi_nhuan": 10187348665.0,
+   "loi_nhuan_4q_yoy": 164.66569099775606,
+   "loi_nhuan_yoy_quy_truoc": 24.114821995818623,
    "roe": 4.96449098,
    "pe": 17.9256564987,
    "no_vcsh": 0.4160358944
@@ -1450,23 +1452,23 @@
   },
   "PNJ": {
    "ma": "PNJ",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
     "ROE 18,4%",
     "P/E 3,9"
    ],
    "xau": [
-    "LNST -269% so với cùng kỳ",
+    "LNST -152% so với cùng kỳ",
     "Lỗ trong quý"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -269.0801329060281,
-   "loi_nhuan": -738875532472.0,
-   "loi_nhuan_4q_yoy": 18.475824837210908,
-   "loi_nhuan_yoy_quy_truoc": 116.5183522915389,
+   "loi_nhuan_yoy": -151.81824863930606,
+   "loi_nhuan": -256865431344.0,
+   "loi_nhuan_4q_yoy": -27.829456998510583,
+   "loi_nhuan_yoy_quy_truoc": -269.0801329060281,
    "roe": 18.39523374,
    "pe": 3.9013191299,
    "no_vcsh": 0.2964454913
@@ -1495,25 +1497,25 @@
   },
   "PVD": {
    "ma": "PVD",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 15,0"
+    "P/E 18,4"
    ],
    "xau": [
-    "LNST -32% so với cùng kỳ",
-    "ROE 6,5%"
+    "LNST -75% so với cùng kỳ",
+    "ROE 5,3%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -31.864150571712734,
-   "loi_nhuan": 163313932040.0,
-   "loi_nhuan_4q_yoy": 40.13336718955534,
-   "loi_nhuan_yoy_quy_truoc": 100.28333281770468,
-   "roe": 6.51913483,
-   "pe": 15.01015063,
-   "no_vcsh": 0.3112044081
+   "loi_nhuan_yoy": -74.50539448182464,
+   "loi_nhuan": 70937812215.0,
+   "loi_nhuan_4q_yoy": 1.6658421382186095,
+   "loi_nhuan_yoy_quy_truoc": -31.864150571712734,
+   "roe": 5.283785819999999,
+   "pe": 18.3964150001,
+   "no_vcsh": 0.3565931572
   },
   "PVT": {
    "ma": "PVT",
@@ -1522,7 +1524,7 @@
     "LNST +42% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 16,6%",
-    "P/E 7,2"
+    "P/E 7,1"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1534,17 +1536,17 @@
    "loi_nhuan_4q_yoy": 56.65472922453188,
    "loi_nhuan_yoy_quy_truoc": 96.31858318443147,
    "roe": 16.6341511,
-   "pe": 7.1552261609,
+   "pe": 7.1384298553,
    "no_vcsh": 0.5414396076
   },
   "REE": {
    "ma": "REE",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 10,6"
+    "P/E 10,3"
    ],
    "xau": [
-    "ROE 12,6%"
+    "ROE 12,8%"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -1554,16 +1556,16 @@
    "loi_nhuan": 787998598602.0,
    "loi_nhuan_4q_yoy": 6.443028062691547,
    "loi_nhuan_yoy_quy_truoc": 1.3423161646718862,
-   "roe": 12.55219018,
-   "pe": 10.6198748082,
-   "no_vcsh": 0.3970495983
+   "roe": 12.75829523,
+   "pe": 10.2712607638,
+   "no_vcsh": 0.4346343042
   },
   "SAB": {
    "ma": "SAB",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "ROE 22,3%",
-    "P/E 11,6"
+    "ROE 22,2%",
+    "P/E 11,7"
    ],
    "xau": [],
    "dat_chuan": false,
@@ -1574,48 +1576,49 @@
    "loi_nhuan": 1232262780779.0,
    "loi_nhuan_4q_yoy": 7.388278601723486,
    "loi_nhuan_yoy_quy_truoc": -3.37181944330589,
-   "roe": 22.28301913,
-   "pe": 11.5508647343,
-   "no_vcsh": 0.0171125061
+   "roe": 22.18161854,
+   "pe": 11.7041464966,
+   "no_vcsh": 0.0121097822
   },
   "SBT": {
    "ma": "SBT",
-   "ky_moi_nhat": "Q2/2026",
-   "tot": [
-    "LNST +45% so với cùng kỳ"
-   ],
+   "ky_moi_nhat": "Q3/2026",
+   "tot": [],
    "xau": [
+    "LNST -23% so với cùng kỳ",
     "ROE 7,4%",
     "P/E cao 24,6"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 45.46287228281572,
-   "loi_nhuan": 233705303305.0,
-   "loi_nhuan_4q_yoy": 3.6409865893946236,
-   "loi_nhuan_yoy_quy_truoc": 13.729007855297093,
+   "loi_nhuan_yoy": -22.58464026715954,
+   "loi_nhuan": 155666565734.0,
+   "loi_nhuan_4q_yoy": 0.03704513565707668,
+   "loi_nhuan_yoy_quy_truoc": 45.46287228281572,
    "roe": 7.375362990000001,
    "pe": 24.6348733201,
    "no_vcsh": 1.35330495
   },
   "SHB": {
    "ma": "SHB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
+    "Doanh thu +43% so với cùng kỳ",
+    "LNST +58% so với cùng kỳ",
     "ROE 17,3%",
     "P/E 4,1"
    ],
    "xau": [],
-   "dat_chuan": false,
+   "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": -5.47517440137697,
-   "loi_nhuan_yoy": -1.2160194181412787,
-   "loi_nhuan": 3602552000000.0,
-   "loi_nhuan_4q_yoy": 10.70926128384726,
-   "loi_nhuan_yoy_quy_truoc": 6.567220100962423,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 42.7643005822498,
+   "loi_nhuan_yoy": 58.008925382558864,
+   "loi_nhuan": 4118855000000.0,
+   "loi_nhuan_4q_yoy": 15.376751830669289,
+   "loi_nhuan_yoy_quy_truoc": -1.2160194181412787,
    "roe": 17.293680589999997,
    "pe": 4.0815809784,
    "no_vcsh": 0.0
@@ -1665,8 +1668,9 @@
   },
   "SSB": {
    "ma": "SSB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
+    "LNST +35% so với cùng kỳ",
     "P/E 18,0"
    ],
    "xau": [
@@ -1674,35 +1678,34 @@
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": -7.548662439827714,
-   "loi_nhuan_yoy": -12.561117116322162,
-   "loi_nhuan": 990923000000.0,
-   "loi_nhuan_4q_yoy": -56.473589332505966,
-   "loi_nhuan_yoy_quy_truoc": -68.19943392741844,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 11.89708592170784,
+   "loi_nhuan_yoy": 34.9560610142529,
+   "loi_nhuan": 1051969000000.0,
+   "loi_nhuan_4q_yoy": -50.83428850839511,
+   "loi_nhuan_yoy_quy_truoc": -12.561117116322162,
    "roe": 7.26722294,
    "pe": 18.0044977689,
    "no_vcsh": 0.0
   },
   "SSI": {
    "ma": "SSI",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +43% so với cùng kỳ",
-    "LNST tăng mạnh 2 quý liên tiếp",
     "P/E 10,8"
    ],
    "xau": [
+    "LNST -24% so với cùng kỳ",
     "ROE 13,4%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 42.768412719643244,
-   "loi_nhuan": 1231126087726.0,
-   "loi_nhuan_4q_yoy": 71.62327363315231,
-   "loi_nhuan_yoy_quy_truoc": 51.41210081569933,
+   "loi_nhuan_yoy": -23.740609115835078,
+   "loi_nhuan": 1124923539033.0,
+   "loi_nhuan_4q_yoy": 27.973865491353035,
+   "loi_nhuan_yoy_quy_truoc": 42.768412719643244,
    "roe": 13.413318900000002,
    "pe": 10.7817548115,
    "no_vcsh": 1.32694043
@@ -1716,7 +1719,7 @@
    "xau": [
     "LNST -54% so với cùng kỳ",
     "ROE 2,5%",
-    "P/E cao 82,7"
+    "P/E cao 81,9"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -1727,7 +1730,7 @@
    "loi_nhuan_4q_yoy": -87.58862232947054,
    "loi_nhuan_yoy_quy_truoc": -53.459637447910865,
    "roe": 2.4573393,
-   "pe": 82.6851701649,
+   "pe": 81.943599132,
    "no_vcsh": 0.0
   },
   "TAL": {
@@ -1759,7 +1762,7 @@
     "Doanh thu +16% so với cùng kỳ",
     "LNST +24% so với cùng kỳ",
     "ROE 15,2%",
-    "P/E 8,3"
+    "P/E 8,0"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1771,36 +1774,37 @@
    "loi_nhuan_4q_yoy": 30.264631158761013,
    "loi_nhuan_yoy_quy_truoc": 17.650564302000006,
    "roe": 15.22360459,
-   "pe": 8.2952009976,
+   "pe": 8.016838548,
    "no_vcsh": 0.0
   },
   "TCH": {
    "ma": "TCH",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +231% so với cùng kỳ"
+    "LNST +1.237% so với cùng kỳ",
+    "LNST tăng mạnh 2 quý liên tiếp",
+    "P/E 14,9"
    ],
    "xau": [
-    "ROE 2,6%",
-    "P/E cao 34,9"
+    "ROE 6,8%"
    ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 231.15174559551704,
-   "loi_nhuan": 125416921400.0,
-   "loi_nhuan_4q_yoy": -60.28447038324074,
-   "loi_nhuan_yoy_quy_truoc": -57.08191294496172,
-   "roe": 2.60058708,
-   "pe": 34.8798152405,
+   "loi_nhuan_yoy": 1237.1484943928472,
+   "loi_nhuan": 537726548424.0,
+   "loi_nhuan_4q_yoy": 39.102398560505236,
+   "loi_nhuan_yoy_quy_truoc": 231.15174559551704,
+   "roe": 6.81775887,
+   "pe": 14.9340556112,
    "no_vcsh": 0.0
   },
   "TCX": {
    "ma": "TCX",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 14,9"
+    "P/E 14,7"
    ],
    "xau": [
     "ROE 13,6%"
@@ -1814,47 +1818,48 @@
    "loi_nhuan_4q_yoy": 29.688723887416746,
    "loi_nhuan_yoy_quy_truoc": 19.141242438514894,
    "roe": 13.61499604,
-   "pe": 14.8767392149,
+   "pe": 14.7161988636,
    "no_vcsh": 0.9154215658
   },
   "TPB": {
    "ma": "TPB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
+    "Doanh thu +26% so với cùng kỳ",
+    "LNST +57% so với cùng kỳ",
     "ROE 16,5%",
     "P/E 4,9"
    ],
    "xau": [],
-   "dat_chuan": false,
+   "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": 12.55385388660082,
-   "loi_nhuan_yoy": 12.148288786723649,
-   "loi_nhuan": 1827573000000.0,
-   "loi_nhuan_4q_yoy": 18.373860263075436,
-   "loi_nhuan_yoy_quy_truoc": -1.244744150087862,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 26.066095889956877,
+   "loi_nhuan_yoy": 57.40069970538721,
+   "loi_nhuan": 2393498000000.0,
+   "loi_nhuan_4q_yoy": 29.229190353549473,
+   "loi_nhuan_yoy_quy_truoc": 12.148288786723649,
    "roe": 16.508131300000002,
    "pe": 4.9386719344,
    "no_vcsh": 0.0
   },
   "VCB": {
    "ma": "VCB",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "Doanh thu +48% so với cùng kỳ",
-    "LNST +65% so với cùng kỳ",
+    "Doanh thu +41% so với cùng kỳ",
     "ROE 17,9%",
     "P/E 11,3"
    ],
    "xau": [],
-   "dat_chuan": true,
+   "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
-   "doanh_thu_yoy": 47.589272517484524,
-   "loi_nhuan_yoy": 64.65653708126862,
-   "loi_nhuan": 14542276000000.0,
-   "loi_nhuan_4q_yoy": 20.162385614116985,
-   "loi_nhuan_yoy_quy_truoc": 8.74329551349211,
+   "ky_key": "2026Q3",
+   "doanh_thu_yoy": 40.87600641874465,
+   "loi_nhuan_yoy": 0.1419322811299084,
+   "loi_nhuan": 9033302000000.0,
+   "loi_nhuan_4q_yoy": 18.64556780230422,
+   "loi_nhuan_yoy_quy_truoc": 64.65653708126862,
    "roe": 17.91575023,
    "pe": 11.2951424253,
    "no_vcsh": 0.0
@@ -1863,11 +1868,11 @@
    "ma": "VCG",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "ROE 35,6%",
-    "P/E 2,4"
+    "P/E 9,2"
    ],
    "xau": [
-    "LNST -91% so với cùng kỳ"
+    "LNST -91% so với cùng kỳ",
+    "ROE 9,7%"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -1877,15 +1882,15 @@
    "loi_nhuan": 305865217889.0,
    "loi_nhuan_4q_yoy": -71.77959992234669,
    "loi_nhuan_yoy_quy_truoc": -21.564595946410048,
-   "roe": 35.59672434,
-   "pe": 2.4193155517,
-   "no_vcsh": 0.4570979322
+   "roe": 9.67189479,
+   "pe": 9.2123437539,
+   "no_vcsh": 0.4729705265
   },
   "VCI": {
    "ma": "VCI",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 15,2"
+    "P/E 14,8"
    ],
    "xau": [
     "ROE 8,1%"
@@ -1899,14 +1904,14 @@
    "loi_nhuan_4q_yoy": 25.437738172233047,
    "loi_nhuan_yoy_quy_truoc": 36.26226746983963,
    "roe": 8.07689841,
-   "pe": 15.2076085237,
+   "pe": 14.8074082994,
    "no_vcsh": 1.3399415303
   },
   "VCK": {
    "ma": "VCK",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 15,4"
+    "P/E 15,2"
    ],
    "xau": [
     "LNST -21% so với cùng kỳ",
@@ -1921,7 +1926,7 @@
    "loi_nhuan_4q_yoy": 24.93872900537719,
    "loi_nhuan_yoy_quy_truoc": 57.063908702417734,
    "roe": 13.901574789999998,
-   "pe": 15.3885439225,
+   "pe": 15.2473646205,
    "no_vcsh": 0.3338507128
   },
   "VGC": {
@@ -1931,7 +1936,7 @@
     "LNST +403% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 20,6%",
-    "P/E 10,6"
+    "P/E 10,5"
    ],
    "xau": [],
    "dat_chuan": true,
@@ -1943,50 +1948,52 @@
    "loi_nhuan_4q_yoy": 29.527068523693934,
    "loi_nhuan_yoy_quy_truoc": 28.499585749874324,
    "roe": 20.616495500000003,
-   "pe": 10.5674689684,
+   "pe": 10.5424867723,
    "no_vcsh": 0.4335368664
   },
   "VHC": {
    "ma": "VHC",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
     "ROE 15,0%",
     "P/E 7,8"
    ],
-   "xau": [],
+   "xau": [
+    "LNST -51% so với cùng kỳ"
+   ],
    "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -7.691109519015493,
-   "loi_nhuan": 475173642481.0,
-   "loi_nhuan_4q_yoy": 0.37708062480947824,
-   "loi_nhuan_yoy_quy_truoc": 37.86948474729734,
+   "loi_nhuan_yoy": -50.77952883688892,
+   "loi_nhuan": 213123560216.0,
+   "loi_nhuan_4q_yoy": -20.965706369294434,
+   "loi_nhuan_yoy_quy_truoc": -7.691109519015493,
    "roe": 15.021183699999998,
    "pe": 7.8338033367,
    "no_vcsh": 0.2514805481
   },
   "VHM": {
    "ma": "VHM",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +202% so với cùng kỳ",
+    "LNST +453% so với cùng kỳ",
     "LNST tăng mạnh 2 quý liên tiếp",
-    "ROE 32,6%",
-    "P/E 6,3"
+    "ROE 37,6%",
+    "P/E 5,2"
    ],
    "xau": [],
    "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 202.11695785237103,
-   "loi_nhuan": 22683056000000.0,
-   "loi_nhuan_4q_yoy": 164.48236582171094,
-   "loi_nhuan_yoy_quy_truoc": 850.2559731404851,
-   "roe": 32.58476471,
-   "pe": 6.2690328519,
-   "no_vcsh": 0.7567729517
+   "loi_nhuan_yoy": 453.21529117726425,
+   "loi_nhuan": 23146135000000.0,
+   "loi_nhuan_4q_yoy": 272.6225938320036,
+   "loi_nhuan_yoy_quy_truoc": 202.11695785237103,
+   "roe": 37.64994975,
+   "pe": 5.2331406789,
+   "no_vcsh": 0.7817680223
   },
   "VIB": {
    "ma": "VIB",
@@ -1994,7 +2001,7 @@
    "tot": [
     "Doanh thu +22% so với cùng kỳ",
     "ROE 15,9%",
-    "P/E 6,8"
+    "P/E 6,7"
    ],
    "xau": [],
    "dat_chuan": false,
@@ -2006,37 +2013,38 @@
    "loi_nhuan_4q_yoy": 2.127803977383236,
    "loi_nhuan_yoy_quy_truoc": -8.237300918048863,
    "roe": 15.94502415,
-   "pe": 6.7607398542,
+   "pe": 6.6641578563,
    "no_vcsh": 0.0
   },
   "VIC": {
    "ma": "VIC",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +1.026% so với cùng kỳ"
+    "LNST +3.392% so với cùng kỳ",
+    "LNST tăng mạnh 2 quý liên tiếp",
+    "ROE 26,1%"
    ],
    "xau": [
-    "ROE 13,9%",
-    "P/E cao 79,4",
-    "Nợ/VCSH 1,86 lần"
+    "P/E cao 43,4",
+    "Nợ/VCSH 1,65 lần"
    ],
-   "dat_chuan": false,
+   "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 1025.9081377689022,
-   "loi_nhuan": 8711953000000.0,
-   "loi_nhuan_4q_yoy": 57.48408028297383,
-   "loi_nhuan_yoy_quy_truoc": 4.259422479313302,
-   "roe": 13.90387041,
-   "pe": 79.3699509653,
-   "no_vcsh": 1.8563743845
+   "loi_nhuan_yoy": 3391.8260999962513,
+   "loi_nhuan": 22354112000000.0,
+   "loi_nhuan_4q_yoy": 384.9120621567966,
+   "loi_nhuan_yoy_quy_truoc": 1025.9081377689022,
+   "roe": 26.060282280000003,
+   "pe": 43.3655566615,
+   "no_vcsh": 1.6498853992
   },
   "VIX": {
    "ma": "VIX",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 15,3"
+    "P/E 14,8"
    ],
    "xau": [
     "LNST -93% so với cùng kỳ",
@@ -2051,7 +2059,7 @@
    "loi_nhuan_4q_yoy": -60.45816819091514,
    "loi_nhuan_yoy_quy_truoc": -94.17014553400176,
    "roe": 6.16818435,
-   "pe": 15.2835944301,
+   "pe": 14.7905752549,
    "no_vcsh": 0.1719119196
   },
   "VJC": {
@@ -2080,7 +2088,7 @@
    "ma": "VND",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 9,9"
+    "P/E 9,7"
    ],
    "xau": [
     "LNST -65% so với cùng kỳ",
@@ -2095,27 +2103,25 @@
    "loi_nhuan_4q_yoy": 8.694898983625787,
    "loi_nhuan_yoy_quy_truoc": 139.49225512938224,
    "roe": 9.81633204,
-   "pe": 9.8617947758,
+   "pe": 9.716768382,
    "no_vcsh": 0.9198876133
   },
   "VNM": {
    "ma": "VNM",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "LNST +28% so với cùng kỳ",
-    "LNST tăng mạnh 2 quý liên tiếp",
     "ROE 33,9%",
     "P/E 11,0"
    ],
    "xau": [],
-   "dat_chuan": true,
+   "dat_chuan": false,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": 27.98229800258676,
-   "loi_nhuan": 3167031130412.0,
-   "loi_nhuan_4q_yoy": 27.918125987180954,
-   "loi_nhuan_yoy_quy_truoc": 54.84522754093311,
+   "loi_nhuan_yoy": 17.3109943493545,
+   "loi_nhuan": 2964174975122.0,
+   "loi_nhuan_4q_yoy": 31.13608330821027,
+   "loi_nhuan_yoy_quy_truoc": 27.98229800258676,
    "roe": 33.85765465,
    "pe": 11.0380086187,
    "no_vcsh": 0.2370546871
@@ -2137,7 +2143,7 @@
    "loi_nhuan_4q_yoy": 51.01087117379157,
    "loi_nhuan_yoy_quy_truoc": 72.43809641329383,
    "roe": 16.45219058,
-   "pe": 7.4396985965,
+   "pe": 7.3595294306,
    "no_vcsh": 0.0
   },
   "VPI": {
@@ -2170,8 +2176,8 @@
     "LNST tăng mạnh 2 quý liên tiếp"
    ],
    "xau": [
-    "ROE 7,8%",
-    "P/E cao 45,1"
+    "ROE 8,4%",
+    "P/E cao 46,7"
    ],
    "dat_chuan": false,
    "loi": null,
@@ -2181,15 +2187,15 @@
    "loi_nhuan": 648518000000.0,
    "loi_nhuan_4q_yoy": 3375.0886085419575,
    "loi_nhuan_yoy_quy_truoc": 299.06931163508943,
-   "roe": 7.75207614,
-   "pe": 45.127320538,
-   "no_vcsh": 0.4601713397
+   "roe": 8.43560072,
+   "pe": 46.7244029361,
+   "no_vcsh": 0.4807322031
   },
   "VPX": {
    "ma": "VPX",
    "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "P/E 11,2"
+    "P/E 11,1"
    ],
    "xau": [
     "LNST -65% so với cùng kỳ",
@@ -2204,7 +2210,7 @@
    "loi_nhuan_4q_yoy": 30.038347430397906,
    "loi_nhuan_yoy_quy_truoc": 292.96942075169534,
    "roe": 10.83767009,
-   "pe": 11.2331945086,
+   "pe": 11.1124074709,
    "no_vcsh": 1.2776513379
   },
   "VRE": {
@@ -2225,7 +2231,7 @@
    "loi_nhuan_4q_yoy": 51.786832826398374,
    "loi_nhuan_yoy_quy_truoc": 30.429187681429703,
    "roe": 14.90420315,
-   "pe": 7.4200614844,
+   "pe": 7.3893365922,
    "no_vcsh": 0.1251058668
   },
   "VSC": {
@@ -2252,25 +2258,25 @@
   },
   "VTP": {
    "ma": "VTP",
-   "ky_moi_nhat": "Q2/2026",
+   "ky_moi_nhat": "Q3/2026",
    "tot": [
-    "ROE 18,3%"
+    "LNST +28% so với cùng kỳ",
+    "ROE 18,0%"
    ],
    "xau": [
-    "LNST -29% so với cùng kỳ",
-    "P/E cao 20,6"
+    "P/E cao 21,0"
    ],
-   "dat_chuan": false,
+   "dat_chuan": true,
    "loi": null,
-   "ky_key": "2026Q2",
+   "ky_key": "2026Q3",
    "doanh_thu_yoy": null,
-   "loi_nhuan_yoy": -28.93924707533809,
-   "loi_nhuan": 68915717788.0,
-   "loi_nhuan_4q_yoy": -14.215200981388099,
-   "loi_nhuan_yoy_quy_truoc": -43.76241410742452,
-   "roe": 18.2855608,
-   "pe": 20.5587119683,
-   "no_vcsh": 0.8755375651
+   "loi_nhuan_yoy": 27.700737408639075,
+   "loi_nhuan": 108975079448.0,
+   "loi_nhuan_4q_yoy": -3.1857943030473734,
+   "loi_nhuan_yoy_quy_truoc": -28.93924707533809,
+   "roe": 18.00681463,
+   "pe": 21.0468025118,
+   "no_vcsh": 0.9900598689
   }
  }
 }
